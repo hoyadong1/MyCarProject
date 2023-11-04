@@ -15,7 +15,7 @@ public class ElectricCar extends Car {
 	@Override
 	public void print() {
 		super.print();
-		System.out.printf("%s %d\n");
+		System.out.printf("\t\t%s %d\n",subsidy,distance);
 	}
 	
 	

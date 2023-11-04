@@ -7,7 +7,6 @@ public class CarStore implements Manageable {
 	String location;
 	
 	HashMap<Car,Integer> CarList = new HashMap<>();
-	Iterator<HashMap.Entry<Car, Integer>> iterator = CarList.entrySet().iterator();
 
 	@Override
 	public void read(Scanner scan) {
@@ -26,6 +25,7 @@ public class CarStore implements Manageable {
 
 	@Override
 	public void print() {
+		Iterator<HashMap.Entry<Car, Integer>> iterator = CarList.entrySet().iterator();
 		System.out.printf("%s %s\n", name,location);
 		while(iterator.hasNext()) {
 			HashMap.Entry<Car, Integer> entry = iterator.next();

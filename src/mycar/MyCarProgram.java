@@ -13,31 +13,33 @@ public class MyCarProgram {
 	
 	public void run() {
 		OptionMgr.readAll("Option.txt", new Factory<Option>() {
-			public Option create() {
+			public Option create(Scanner scan) {
 				return new Option();
 			}
 		});
 		PartMgr.readAll("Part.txt", new Factory<Part>() {
-			public Part create() {
+			public Part create(Scanner scan) {
 				return new Part();
 			}
 		});
 		CarMgr.readAll("Car.txt", new Factory<Car>() {
-			public Car create() {
-				return new Car();
+			public Car create(Scanner scan) {
+				int n = scan.nextInt();
+				if (n == 1) return new Car();
+				return new ElectricCar();
+				
 			}
 		});
 		CarStoreMgr.readAll("CarStore.txt", new Factory<CarStore>() {
-			public CarStore create() {
+			public CarStore create(Scanner scan) {
 				return new CarStore();
 			}
 		});
 		RepairShopMgr.readAll("RepairShop.txt", new Factory<RepairShop>() {
-			public RepairShop create() {
+			public RepairShop create(Scanner scan) {
 				return new RepairShop();
 			}
 		});
-		
 		Menu();
 	}
 	

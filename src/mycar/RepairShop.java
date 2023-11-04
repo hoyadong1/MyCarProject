@@ -8,7 +8,6 @@ public class RepairShop implements Manageable{
 	int cost;
 	
 	HashMap<Part, Integer> PartList = new HashMap<>();
-	Iterator<HashMap.Entry<Part, Integer>> iterator = PartList.entrySet().iterator();
 
 	@Override
 	public void read(Scanner scan) {
@@ -28,6 +27,7 @@ public class RepairShop implements Manageable{
 	}
 	@Override
 	public void print() {
+		Iterator<HashMap.Entry<Part, Integer>> iterator = PartList.entrySet().iterator();
 		System.out.printf("%s %s\n", name,location);
 		while(iterator.hasNext()) {
 			HashMap.Entry<Part, Integer> entry = iterator.next();
