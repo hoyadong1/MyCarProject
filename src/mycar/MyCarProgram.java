@@ -70,8 +70,7 @@ public class MyCarProgram {
 	}
 
 	private void RepairCar() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("원하는 차량 스펙 입력");
 	}
 
 	private void SearchCar() {
