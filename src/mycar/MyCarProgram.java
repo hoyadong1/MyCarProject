@@ -3,26 +3,26 @@ package mycar;
 import java.util.*;
 
 public class MyCarProgram {
-	static Manager<Car> CarMgr = new Manager<>();
-	static Manager<Part> PartMgr = new Manager<>();
-	static Manager<Option> OptionMgr = new Manager<>();
-	static Manager<CarStore> CarStoreMgr = new Manager<>();
-	static Manager<RepairShop> RepairShopMgr = new Manager<>();
+	static Manager<Car> carMgr = new Manager<>();
+	static Manager<Part> partMgr = new Manager<>();
+	static Manager<Option> optionMgr = new Manager<>();
+	static Manager<CarStore> carStoreMgr = new Manager<>();
+	static Manager<RepairShop> repairShopMgr = new Manager<>();
 	
 	Scanner scan = new Scanner(System.in);
 	
 	public void run() {
-		OptionMgr.readAll("Option.txt", new Factory<Option>() {
+		optionMgr.readAll("Option.txt", new Factory<Option>() {
 			public Option create(Scanner scan) {
 				return new Option();
 			}
 		});
-		PartMgr.readAll("Part.txt", new Factory<Part>() {
+		partMgr.readAll("Part.txt", new Factory<Part>() {
 			public Part create(Scanner scan) {
 				return new Part();
 			}
 		});
-		CarMgr.readAll("Car.txt", new Factory<Car>() {
+		carMgr.readAll("Car.txt", new Factory<Car>() {
 			public Car create(Scanner scan) {
 				int n = scan.nextInt();
 				if (n == 1) return new Car();
@@ -30,12 +30,12 @@ public class MyCarProgram {
 				
 			}
 		});
-		CarStoreMgr.readAll("CarStore.txt", new Factory<CarStore>() {
+		carStoreMgr.readAll("CarStore.txt", new Factory<CarStore>() {
 			public CarStore create(Scanner scan) {
 				return new CarStore();
 			}
 		});
-		RepairShopMgr.readAll("RepairShop.txt", new Factory<RepairShop>() {
+		repairShopMgr.readAll("RepairShop.txt", new Factory<RepairShop>() {
 			public RepairShop create(Scanner scan) {
 				return new RepairShop();
 			}
@@ -92,13 +92,13 @@ public class MyCarProgram {
 	
 
 	public static Option findOption(String kwd) {
-		return OptionMgr.find(kwd);
+		return optionMgr.find(kwd);
 	}
 	public static Car findCar(String kwd) {
-		return CarMgr.find(kwd);
+		return carMgr.find(kwd);
 	}
 	public static Part findPart(String kwd) {
-		return PartMgr.find(kwd);
+		return partMgr.find(kwd);
 	}
 	
 	

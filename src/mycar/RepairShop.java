@@ -7,7 +7,7 @@ public class RepairShop implements Manageable{
 	String location;
 	int cost;
 	
-	HashMap<Part, Integer> PartList = new HashMap<>();
+	HashMap<Part, Integer> partList = new HashMap<>();
 
 	@Override
 	public void read(Scanner scan) {
@@ -21,13 +21,13 @@ public class RepairShop implements Manageable{
 			
 			Part p = MyCarProgram.findPart(code);
 			
-			PartList.put(p, num);
+			partList.put(p, num);
 			
 		}
 	}
 	@Override
 	public void print() {
-		Iterator<HashMap.Entry<Part, Integer>> iterator = PartList.entrySet().iterator();
+		Iterator<HashMap.Entry<Part, Integer>> iterator = partList.entrySet().iterator();
 		System.out.printf("%s %s\n", name,location);
 		while(iterator.hasNext()) {
 			HashMap.Entry<Part, Integer> entry = iterator.next();

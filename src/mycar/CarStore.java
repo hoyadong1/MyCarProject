@@ -6,7 +6,7 @@ public class CarStore implements Manageable {
 	String name;
 	String location;
 	
-	HashMap<Car,Integer> CarList = new HashMap<>();
+	HashMap<Car,Integer> carList = new HashMap<>();
 
 	@Override
 	public void read(Scanner scan) {
@@ -19,13 +19,13 @@ public class CarStore implements Manageable {
 			int num = scan.nextInt();
 			Car c = MyCarProgram.findCar(code);
 			
-			CarList.put(c, num);
+			carList.put(c, num);
 		}
 	}
 
 	@Override
 	public void print() {
-		Iterator<HashMap.Entry<Car, Integer>> iterator = CarList.entrySet().iterator();
+		Iterator<HashMap.Entry<Car, Integer>> iterator = carList.entrySet().iterator();
 		System.out.printf("%s %s\n", name,location);
 		while(iterator.hasNext()) {
 			HashMap.Entry<Car, Integer> entry = iterator.next();
