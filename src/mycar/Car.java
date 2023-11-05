@@ -2,6 +2,8 @@ package mycar;
 
 import java.util.*;
 
+import mycar.MyCarProgram.CarRange;
+
 public class Car implements Manageable{
 	String code;
 	String name;
@@ -44,6 +46,20 @@ public class Car implements Manageable{
 	public boolean matches(String kwd) {
 		if(kwd.equals(code)) return true;
 		return false;
+	}
+	
+	public boolean isRange(CarRange c) {
+		if(price<c.startPrice || price>c.endPrice) return false;
+		if(year<c.startYear || year>c.endYear) return false;
+		int i=0;
+		for(String compFuel : c.fuelList) {
+			if(compFuel.equals(fuel)) break;
+			i++;
+		}
+		if(i == c.fuelList.size()) return false;
+		if(fuelEfficiency<c.startFuelEffi || fuelEfficiency>c.endFuelEffi) return false;
+		if(power<c.startPower || power > c.endPower) return false;
+		return true;
 	}
 
 }

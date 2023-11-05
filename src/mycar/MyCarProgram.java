@@ -8,9 +8,9 @@ public class MyCarProgram {
 	static Manager<Option> optionMgr = new Manager<>();
 	static Manager<CarStore> carStoreMgr = new Manager<>();
 	static Manager<RepairShop> repairShopMgr = new Manager<>();
-	
+
 	Scanner scan = new Scanner(System.in);
-	
+
 	public void run() {
 		optionMgr.readAll("Option.txt", new Factory<Option>() {
 			public Option create(Scanner scan) {
@@ -25,9 +25,10 @@ public class MyCarProgram {
 		carMgr.readAll("Car.txt", new Factory<Car>() {
 			public Car create(Scanner scan) {
 				int n = scan.nextInt();
-				if (n == 1) return new Car();
+				if (n == 1)
+					return new Car();
 				return new ElectricCar();
-				
+
 			}
 		});
 		carStoreMgr.readAll("CarStore.txt", new Factory<CarStore>() {
@@ -42,7 +43,7 @@ public class MyCarProgram {
 		});
 		Menu();
 	}
-	
+
 	private void Menu() {
 		int num;
 		while (true) {
@@ -70,37 +71,83 @@ public class MyCarProgram {
 	}
 
 	private void RepairCar() {
-		System.out.println("원하는 차량 스펙 입력");
+
 	}
 
 	private void SearchCar() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void PurchaseCar() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void RecommendCar() {
-		// TODO Auto-generated method stub
-		
+		CarRange CR = new CarRange();
+		CR.read();
+		System.out.println("당신이 원하는 스펙에 맞는 차량 리스트입니다.");
+		for(Car c : carMgr.mList) {
+			if(c.isRange(CR)) c.print();
+		}
 	}
-	
-	
 
 	public static Option findOption(String kwd) {
 		return optionMgr.find(kwd);
 	}
+
 	public static Car findCar(String kwd) {
 		return carMgr.find(kwd);
 	}
+
 	public static Part findPart(String kwd) {
 		return partMgr.find(kwd);
 	}
-	
-	
+
+	class CarRange {
+		int startPrice;
+		int endPrice;
+		int startYear;
+		int endYear;
+		ArrayList<String> fuelList = new ArrayList();
+		int startFuelEffi;
+		int endFuelEffi;
+		int startPower;
+		int endPower;
+
+		void read() {
+			System.out.println("원하는 차량 가격대 입력");
+			System.out.print(">>");
+			startPrice = scan.nextInt();
+			endPrice = scan.nextInt();
+
+			System.out.println("원하는 차량 연식범위 입력");
+			System.out.print(">>");
+			startYear = scan.nextInt();
+			endYear = scan.nextInt();
+
+			System.out.println("원하는 차량 연료타입 입력(가솔린, 전기, 하이브리드, LPG, 디젤)공백 구분 다중입력 가능, 입력마치면 0입력");
+			System.out.print(">>");
+			String fuel;
+			while (true) {
+				fuel = scan.next();
+				if (fuel.equals("0"))
+					break;
+				fuelList.add(fuel);
+			}
+
+			System.out.println("원하는 차량 연비 범위 입력");
+			System.out.print(">>");
+			startFuelEffi = scan.nextInt();
+			endFuelEffi = scan.nextInt();
+
+			System.out.println("원하는 차량 출력범위 입력");
+			System.out.print(">>");
+			startPower = scan.nextInt();
+			endPower = scan.nextInt();
+		}
+	}
 
 	public static void main(String[] args) {
 		MyCarProgram mcp = new MyCarProgram();
