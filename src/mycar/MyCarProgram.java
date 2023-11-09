@@ -3,26 +3,26 @@ package mycar;
 import java.util.*;
 
 public class MyCarProgram {
-	static Manager<Car> carManager = new Manager<>();
-	static Manager<Part> partManager = new Manager<>();
-	static Manager<Option> optionManager = new Manager<>();
-	static Manager<CarStore> carStroeManager = new Manager<>();
-	static Manager<RepairShop> repairShopManager = new Manager<>();
+	static Manager<Car> carMgr = new Manager<>();
+	static Manager<Part> partMgr = new Manager<>();
+	static Manager<Option> optionMgr = new Manager<>();
+	static Manager<CarStore> carStoreMgr = new Manager<>();
+	static Manager<RepairShop> repairShopMgr = new Manager<>();
 	
 	Scanner scan = new Scanner(System.in);
 	
 	public void run() {
-		optionManager.readAll("Option.txt", new Factory<Option>() {
+		optionMgr.readAll("Option.txt", new Factory<Option>() {
 			public Option create(Scanner scan) {
 				return new Option();
 			}
 		});
-		partManager.readAll("Part.txt", new Factory<Part>() {
+		partMgr.readAll("Part.txt", new Factory<Part>() {
 			public Part create(Scanner scan) {
 				return new Part();
 			}
 		});
-		carManager.readAll("Car.txt", new Factory<Car>() {
+		carMgr.readAll("Car_utf.txt", new Factory<Car>() {
 			public Car create(Scanner scan) {
 				int n = scan.nextInt();
 				if (n == 1) return new Car();
@@ -30,16 +30,17 @@ public class MyCarProgram {
 				
 			}
 		});
-		carStroeManager.readAll("CarStore.txt", new Factory<CarStore>() {
+		carStoreMgr.readAll("CarStore.txt", new Factory<CarStore>() {
 			public CarStore create(Scanner scan) {
 				return new CarStore();
 			}
 		});
-		repairShopManager.readAll("RepairShop.txt", new Factory<RepairShop>() {
+		repairShopMgr.readAll("RepairShop.txt", new Factory<RepairShop>() {
 			public RepairShop create(Scanner scan) {
 				return new RepairShop();
 			}
 		});
+		carMgr.printAll();
 		Menu();
 	}
 	
@@ -78,10 +79,38 @@ public class MyCarProgram {
 		// TODO Auto-generated method stub
 		
 	}
-
+	private  HashSet<String> CarTypeArray(){
+		// TODO arrlylist 아무거나 입력받아도 특정 키워드로 중복제거하는 기능 제작
+		HashSet<String> carType = new HashSet<>();
+		for(Car car : carMgr.mList){
+			carType.add(car.name);
+		}
+		return  carType;
+	}
 	private void PurchaseCar() {
-		// TODO Auto-generated method stub
-		
+		HashSet<String> carType = CarTypeArray();
+		String inputCarType = null;
+		String inputCarOption = null;
+		Car purchaseCar = null;
+
+		for(String string : carType){
+			System.out.println(string);
+		}
+		System.out.println("차종을 입력하세요.");
+		inputCarType = scan.next();
+		purchaseCar = findCar(inputCarType);
+
+		optionMgr.printAll();
+		System.out.println("옵션을 입력하세요. 0 : 종료");
+		while (true){
+			inputCarOption = scan.next();
+			if(inputCarOption.equals("0")){
+				break;
+			}
+			purchaseCar.optionList.add(findOption(inputCarOption));
+
+		}
+		purchaseCar.print();
 	}
 
 	private void RecommendCar() {
@@ -92,13 +121,13 @@ public class MyCarProgram {
 	
 
 	public static Option findOption(String kwd) {
-		return optionManager.find(kwd);
+		return optionMgr.find(kwd);
 	}
 	public static Car findCar(String kwd) {
-		return carManager.find(kwd);
+		return carMgr.find(kwd);
 	}
 	public static Part findPart(String kwd) {
-		return partManager.find(kwd);
+		return partMgr.find(kwd);
 	}
 	
 	
