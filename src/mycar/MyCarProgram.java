@@ -1,5 +1,6 @@
 package mycar;
 
+import java.awt.EventQueue;
 import java.util.*;
 
 public class MyCarProgram {
@@ -88,8 +89,9 @@ public class MyCarProgram {
 		CarRange CR = new CarRange();
 		CR.read();
 		System.out.println("당신이 원하는 스펙에 맞는 차량 리스트입니다.");
-		for(Car c : carMgr.mList) {
-			if(c.isRange(CR)) c.print();
+		for (Car c : carMgr.mList) {
+			if (c.isRange(CR))
+				c.print();
 		}
 	}
 
@@ -153,5 +155,4 @@ public class MyCarProgram {
 		MyCarProgram mcp = new MyCarProgram();
 		mcp.run();
 	}
-
 }
