@@ -2,7 +2,6 @@ package mycar;
 
 import java.util.*;
 
-import mycar.MyCarProgram.CarRange;
 
 public class Car implements Manageable{
 	String code;
