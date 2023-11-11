@@ -11,7 +11,7 @@ public class Car implements Manageable{
 	int fuelEfficiency;
 	int power;
 	
-	ArrayList<Option> OptionList = new ArrayList<>();
+	ArrayList<Option> optionList = new ArrayList<>();
 
 	@Override
 	public void read(Scanner scan) {
@@ -27,14 +27,17 @@ public class Car implements Manageable{
 			String option = scan.next();
 			if(option.equals("0")) break;
 			Option o = MyCarProgram.findOption(option);
-			OptionList.add(o);
+			optionList.add(o);
 		}
 	}
 
 	@Override
 	public void print() {
 		System.out.printf("%s %s %d %d %s %d %d\n\t\t", code, name, price, year, fuel, fuelEfficiency,power);
-		for(Option o : OptionList) {
+		for(Option o : optionList) {
+			if(o == null){
+				break;
+			}
 			System.out.print(o.name+" ");
 		}
 		System.out.println();
