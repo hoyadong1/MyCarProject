@@ -92,6 +92,7 @@ public class MyCarProgram {
 		String inputCarType = null;
 		String inputCarOption = null;
 		Car purchaseCar = null;
+		Option option = null;
 
 		for(String string : carType){
 			System.out.println(string);
@@ -107,8 +108,9 @@ public class MyCarProgram {
 			if(inputCarOption.equals("0")){
 				break;
 			}
-			purchaseCar.optionList.add(findOption(inputCarOption));
-
+			option = findOption(inputCarOption);
+			purchaseCar.optionList.add(option);
+			purchaseCar.price += option.price;
 		}
 		purchaseCar.print();
 	}
