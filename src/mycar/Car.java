@@ -60,5 +60,49 @@ public class Car implements Manageable{
 		if(power<c.startPower || power > c.endPower) return false;
 		return true;
 	}
+	
+	public int insertSelf(int row) {
+		if(row == 0) {
+			Start1.data = new Object[][] {
+				{code, name, price, year, fuel, fuelEfficiency, power},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+			};
+		}
+		else {
+			for(int i =0; i<7;i++) {
+				if(i==0) Start1.data[row][i] = code;
+				if(i==1) Start1.data[row][i] = name;
+				if(i==2) Start1.data[row][i] = price;
+				if(i==3) Start1.data[row][i] = year;
+				if(i==4) Start1.data[row][i] = fuel;
+				if(i==5) Start1.data[row][i] = fuelEfficiency;
+				if(i==6) Start1.data[row][i] = power;
+			}
+		}
+		return (row+1);
+	}
 
 }
