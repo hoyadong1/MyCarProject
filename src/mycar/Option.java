@@ -1,5 +1,6 @@
 package mycar;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Option implements Manageable {
@@ -8,21 +9,28 @@ public class Option implements Manageable {
     int price;
     int fixPrice;
 
+    List<Review> reviews = null;
+
     @Override
     public void read(Scanner scan) {
         name = scan.next();
         price = scan.nextInt();
         fixPrice = scan.nextInt();
-        while (true) {
-            MyCarProgram.findReview(name);
-            //TODO 같은 이름을 가진 옵션을 모두 추가하는 방법 생각하기....
-        }
+        reviews = MyCarProgram.reviewManager.findAll(name);
 
     }
 
     @Override
     public void print() {
         System.out.printf("%s %d %d %n", name, price, fixPrice);
+        System.out.println("--리뷰--");
+        if (reviews == null) {
+            System.out.println("리뷰가 없습니다.");
+        } else {
+            for (Review review : reviews) {
+                review.print();
+            }
+        }
     }
 
     @Override
