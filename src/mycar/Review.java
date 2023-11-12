@@ -6,12 +6,14 @@ public class Review implements Manageable {
 
     int rating = 0;
     String reviewComment = null;
-    Option option = null;
+    //Option option = null;
+    String optionName = null;
 
     //input txt => 옵션이름 별점 리뷰내용
     @Override
     public void read(Scanner scan) {
-        option = MyCarProgram.findOption(scan.next());
+        optionName = scan.next();
+        //option = MyCarProgram.findOption(scan.next());
         rating = scan.nextInt();
         reviewComment = scan.next();
     }
@@ -23,7 +25,9 @@ public class Review implements Manageable {
 
     @Override
     public boolean matches(String kwd) {
-        if (kwd.equals("" + rating)) {
+        if (kwd.equals(optionName)) {
+            return true;
+        } else if (kwd.equals(Integer.toString(rating))) {
             return true;
         }
         return false;
