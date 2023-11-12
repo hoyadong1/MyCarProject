@@ -9,14 +9,13 @@ public class MyCarProgram {
     static Manager<Option> optionMgr = new Manager<>();
     static Manager<CarStore> carStoreMgr = new Manager<>();
     static Manager<RepairShop> repairShopMgr = new Manager<>();
-
     static Manager<Review> reviewManager = new Manager<>();
 
     Scanner scan = new Scanner(System.in);
 
     public void run() {
-        reviewManager.readAll("review.txt", scan -> new Review());
-        optionMgr.readAll("Option.txt", new Factory<Option>() {
+        reviewManager.readAll("Review.txt", scan -> new Review());
+        optionMgr.readAll("Option_utf.txt", new Factory<Option>() {
             public Option create(Scanner scan) {
                 return new Option();
             }
