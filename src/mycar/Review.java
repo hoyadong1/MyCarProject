@@ -6,21 +6,19 @@ public class Review implements Manageable {
 
     int rating = 0;
     String reviewComment = null;
-    //Option option = null;
     String optionName = null;
 
     //input txt => 옵션이름 별점 리뷰내용
     @Override
     public void read(Scanner scan) {
         optionName = scan.next();
-        //option = MyCarProgram.findOption(scan.next());
         rating = scan.nextInt();
-        reviewComment = scan.next();
+        reviewComment = scan.nextLine();
     }
 
     @Override
     public void print() {
-        System.out.printf(" rating : %d] comment : %s", rating, reviewComment);
+        System.out.printf(" rating : [%d] comment : %s %n", rating, reviewComment);
     }
 
     @Override
