@@ -1,6 +1,5 @@
 package mycar;
 
-import java.awt.EventQueue;
 import java.util.*;
 
 public class MyCarProgram {
@@ -72,17 +71,76 @@ public class MyCarProgram {
     }
 
     private void RepairCar() {
+        System.out.print("수리할 부품 코드를 입력하세요: ");
+        String code = scan.next();
+        boolean exists = false;
 
+        // 부품 코드 입력받아 있으면 if문 실행 없으면 else문 실행
+        Part repairPart = findPart(code);
+        if (repairPart != null) {
+            // 부품 이름과 부품 수리 견적 출력
+            System.out.println("부품 이름: " + repairPart.name);
+            System.out.println("부품 수리 견적: " + repairPart.fixPrice);
+
+            // 해당 부품을 보유한 정비소 출력 없으면 없다고 안내
+            System.out.println("해당 부품을 보유한 정비소:");
+            for (RepairShop repairShop : repairShopMgr.mList) {
+                if (repairShop.partList.containsKey(repairPart)) {
+                    System.out.println(repairShop.name + " (" + repairShop.location + ")");
+                    exists = true;
+                }
+            }
+            if (!exists)
+                System.out.println("해당 부품이 정비소에 존재하지 않습니다.");
+        } else {
+            System.out.println("해당 부품이 존재하지 않습니다.");
+        }
     }
 
     private void SearchCar() {
-        // TODO Auto-generated method stub
-
+        System.out.print("차종 코드를 입력하세요: ");
+        String carCode = scan.next();
+        System.out.println("검색 결과:");
+        boolean carExists = false;
+        Car findingCar = findCar(carCode);
+        for (CarStore store : carStoreMgr.mList) {
+            if (store.haveCar(findingCar)) {
+                carExists = true;
+                System.out.println(store.name + " " + store.location + " : "
+                        + store.carList.get(findingCar) + "대");
+            }
+        }
+        if (!carExists) {
+            System.out.println("해당 차량은 현재 전국 매장에 존재하지 않습니다.");
+        }
     }
 
     private void PurchaseCar() {
-        // TODO Auto-generated method stub
+        HashSet<String> carType = CarTypeArray();
+        String inputCarType = null;
+        String inputCarOption = null;
+        Car purchaseCar = null;
+        Option option = null;
 
+        for (String string : carType) {
+            System.out.println(string);
+        }
+        System.out.println("차종을 입력하세요.");
+        inputCarType = scan.next();
+        purchaseCar = findCar(inputCarType);
+
+        optionMgr.printAll();
+        System.out.println("옵션을 입력하세요. 0 : 종료");
+        while (true) {
+            inputCarOption = scan.next();
+            if (inputCarOption.equals("0")) {
+                break;
+            }
+            option = findOption(inputCarOption);
+            purchaseCar.optionList.add(option);
+            purchaseCar.price += option.price;
+        }
+        purchaseCar.print();
     }
 
     private void RecommendCar() {
@@ -107,6 +165,15 @@ public class MyCarProgram {
         return partMgr.find(kwd);
     }
 
+    private HashSet<String> CarTypeArray() {
+        // TODO arrlylist 아무거나 입력받아도 특정 키워드로 중복제거하는 기능 제작
+        HashSet<String> carType = new HashSet<>();
+        for (Car car : carMgr.mList) {
+            carType.add(car.name);
+        }
+        return carType;
+    }
+
     public void makeRecommendList(CarRange cr) {
         int row = 0;
         for (Car c : carMgr.mList) {
@@ -119,4 +186,5 @@ public class MyCarProgram {
         MyCarProgram mcp = new MyCarProgram();
         mcp.run();
     }
+
 }

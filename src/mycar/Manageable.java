@@ -3,9 +3,9 @@ package mycar;
 import java.util.*;
 
 interface Manageable {
-	public void read(Scanner scan);
+    public void read(Scanner scan);
 
-	public void print();
+    public void print();
 
-	public boolean matches(String kwd);
+    public boolean matches(String kwd);
 }
