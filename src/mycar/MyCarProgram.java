@@ -41,7 +41,6 @@ public class MyCarProgram {
                 return new RepairShop();
             }
         });
-        Menu();
     }
 
     private void Menu() {
