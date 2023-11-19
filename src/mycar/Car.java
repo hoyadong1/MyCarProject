@@ -119,7 +119,11 @@ public class Car implements Manageable {
         }
         return (row + 1);
     }
-    public List<Option> getOptionList(){
-        return optionList;
+    public List<String> getOptionListName(){
+        ArrayList<String> optionListName = new ArrayList<>();
+        for(Option option : optionList){
+            optionListName.add(option.name);
+        }
+        return optionListName;
     }
 }
