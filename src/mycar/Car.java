@@ -119,5 +119,7 @@ public class Car implements Manageable {
         }
         return (row + 1);
     }
-
+    public List<Option> getOptionList(){
+        return optionList;
+    }
 }
