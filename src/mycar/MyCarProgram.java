@@ -12,7 +12,7 @@ public class MyCarProgram {
     Scanner scan = new Scanner(System.in);
 
     public void run() {
-        optionMgr.readAll("Option.txt", new Factory<Option>() {
+        optionMgr.readAll("Option_u.txt", new Factory<Option>() {
             public Option create(Scanner scan) {
                 return new Option();
             }
@@ -22,7 +22,7 @@ public class MyCarProgram {
                 return new Part();
             }
         });
-        carMgr.readAll("Car.txt", new Factory<Car>() {
+        carMgr.readAll("Car_u.txt", new Factory<Car>() {
             public Car create(Scanner scan) {
                 int n = scan.nextInt();
                 if (n == 1)
