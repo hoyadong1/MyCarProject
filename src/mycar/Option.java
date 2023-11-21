@@ -7,7 +7,6 @@ public class Option implements Manageable {
 
     String name;
     int price;
-    int fixPrice;
 
     List<Review> reviews = null;
 
@@ -15,7 +14,6 @@ public class Option implements Manageable {
     public void read(Scanner scan) {
         name = scan.next();
         price = scan.nextInt();
-        fixPrice = scan.nextInt();
         reviews = MyCarProgram.reviewManager.findAll(name);
 
     }
