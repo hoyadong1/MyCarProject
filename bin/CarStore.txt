@@ -1,0 +1,5 @@
+기아 서현대리점 AK2 2 CL4 2 JFPE 2 DL3 1 GL3 1 0
+기아 오리대리점 AK2EV 2 AK2 2 DL3 3 0
+기아 죽전대리점 DL3HEV 2 AK2EV 2 JFPE 1 0
+기아 동서대리점 JFHEV 1 GL3 2 DL3 1 0
+기아 분당중앙지점 GL3HEV 1 AL4 3 DL3 1 JFPE 1 0
