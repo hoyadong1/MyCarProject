@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import mycar.Car;
+import mycar.swing.tools.JLabelFont;
 
 public class PurchaseCarResult extends JPanel {
 

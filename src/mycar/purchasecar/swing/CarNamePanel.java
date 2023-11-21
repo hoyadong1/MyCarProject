@@ -5,6 +5,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import mycar.swing.tools.JLabelFont;
 
 public class CarNamePanel extends JPanel {
 
