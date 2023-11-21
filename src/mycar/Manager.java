@@ -39,21 +39,32 @@ public class Manager<T extends Manageable> {
         while (true) {
             System.out.print(">> ");
             kwd = scan.next();
-            if (kwd.equals("end"))
+            if (kwd.equals("end")){
                 break;
-            for (T m : mList) {
-                if (m.matches(kwd))
+            }for (T m : mList) {
+                if (m.matches(kwd)){
                     m.print();
             }
         }
-    }
+    }}
 
     public T find(String kwd) {
         for (T m : mList) {
             if (m.matches(kwd))
-                return m;
+                {
+				return m;
+			}
         }
         return null;
     }
 
+    public List<T> findAll(String kwd) {
+        List<T> foundList = new ArrayList<>();
+        for (T m : mList) {
+            if (m.matches(kwd)) {
+                foundList.add(m);
+            }
+        }
+        return foundList.isEmpty() ? null : foundList;
+    }
 }
