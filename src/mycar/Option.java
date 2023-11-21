@@ -16,7 +16,7 @@ public class Option implements Manageable {
         name = scan.next();
         price = scan.nextInt();
         fixPrice = scan.nextInt();
-        reviews = MyCarProgram.reviewManager.findAll(name);
+        reviews = MyCarProgram.reviewMgr.findAll(name);
 
     }
 

@@ -8,6 +8,7 @@ public class MyCarProgram {
     static Manager<Option> optionMgr = new Manager<>();
     static Manager<CarStore> carStoreMgr = new Manager<>();
     static Manager<RepairShop> repairShopMgr = new Manager<>();
+    static Manager<Review> reviewMgr = new Manager<>();
 
     Scanner scan = new Scanner(System.in);
 
