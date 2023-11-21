@@ -1,8 +1,10 @@
 package mycar;
 
 import java.util.Scanner;
+import manager.Manageable;
 
 public class Option implements Manageable {
+
     String name;
     int price;
 
@@ -19,8 +21,9 @@ public class Option implements Manageable {
 
     @Override
     public boolean matches(String kwd) {
-        if (kwd.equals(name))
+        if (kwd.equals(name)) {
             return true;
+        }
         return false;
     }
 

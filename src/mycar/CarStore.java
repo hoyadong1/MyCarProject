@@ -1,8 +1,12 @@
 package mycar;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Scanner;
+import manager.Manageable;
 
 public class CarStore implements Manageable {
+
     String name;
     String location;
 
@@ -15,8 +19,9 @@ public class CarStore implements Manageable {
 
         while (true) {
             String code = scan.next();
-            if (code.equals("0"))
+            if (code.equals("0")) {
                 break;
+            }
             int num = scan.nextInt();
             Car c = MyCarProgram.findCar(code);
 
@@ -36,8 +41,9 @@ public class CarStore implements Manageable {
 
     @Override
     public boolean matches(String kwd) {
-        if (kwd.equals(name))
+        if (kwd.equals(name)) {
             return true;
+        }
         return false;
     }
 
@@ -45,8 +51,9 @@ public class CarStore implements Manageable {
         Iterator<HashMap.Entry<Car, Integer>> iterator = carList.entrySet().iterator();
         while (iterator.hasNext()) {
             HashMap.Entry<Car, Integer> entry = iterator.next();
-            if (entry.getKey().code.equals(car.code))
+            if (entry.getKey().code.equals(car.code)) {
                 return true;
+            }
         }
         return false;
     }

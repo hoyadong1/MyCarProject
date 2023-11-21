@@ -1,8 +1,12 @@
 package mycar;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Scanner;
+import manager.Manageable;
 
 public class RepairShop implements Manageable {
+
     String name;
     String location;
     int cost;
@@ -16,8 +20,9 @@ public class RepairShop implements Manageable {
         cost = scan.nextInt();
         while (true) {
             String code = scan.next();
-            if (code.equals("0"))
+            if (code.equals("0")) {
                 break;
+            }
             int num = scan.nextInt();
 
             Part p = MyCarProgram.findPart(code);
@@ -39,11 +44,11 @@ public class RepairShop implements Manageable {
 
     @Override
     public boolean matches(String kwd) {
-        if (kwd.equals(name))
+        if (kwd.equals(name)) {
             return true;
+        }
         return false;
     }
-
 
 
 }
