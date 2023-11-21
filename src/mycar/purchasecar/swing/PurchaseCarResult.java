@@ -1,31 +1,39 @@
 package mycar.purchasecar.swing;
 
-import java.util.ArrayList;
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import mycar.Car;
-import mycar.Option;
 
 public class PurchaseCarResult extends JPanel {
-    private JList<String> purchaseCarOptionList;
-    private JList<String> purchaseCarOptionList2;
-    private DefaultListModel<String> purchaseCarOptionModel;
-    //private DefaultListModel<String> purchaseCarOptionModel2;
 
-    private JList<String> makeList(Car car){
-        purchaseCarOptionModel = new DefaultListModel<>();
+    public PurchaseCarResult(Car userMadeCar, Car basketCar) {
+        //setLayout(new GridLayout(5,2));
+        setLayout(new BorderLayout());
 
-        for(String optionName : car.getOptionListName()){
-            purchaseCarOptionModel.addElement(optionName);
-        }
-        JList<String> tempJList;
-        tempJList = new JList<>(purchaseCarOptionModel);
-        return tempJList;
-    }
+        //-----setting----
+        this.setBackground(new Color(215, 157, 157));
+        //-----header----
+        String userMadeCarName = userMadeCar.getCarName();
+        String basketCarName = (basketCar == null) ? "없음" : basketCar.getCarName();
+        JPanel carNamePanel = new CarNamePanel(userMadeCarName, basketCarName);
+        this.add(carNamePanel, BorderLayout.NORTH);
 
-    public PurchaseCarResult(Car userMadeCar){
-        purchaseCarOptionList = makeList(userMadeCar);
-        this.add(purchaseCarOptionList);
+        //------body-------
+        JPanel purchaseCarOptionPanel = new CarOptionListPanel(userMadeCar);
+        add(purchaseCarOptionPanel, BorderLayout.WEST);
+
+        JLabel lblCarRepairEstimate = new JLabel("");
+        JLabelFont.setFont(lblCarRepairEstimate, 30);
+        lblCarRepairEstimate.setBounds(555, 485, 167, 15);
+        this.add(lblCarRepairEstimate);
+
+        JPanel purchaseBasketCarOptionPanel = new CarOptionListPanel(basketCar);
+        add(purchaseBasketCarOptionPanel, BorderLayout.EAST);
+
+        //-----footer----
+        JPanel carOptionComparePanel = new CarOptionComparePanel(userMadeCar, basketCar);
+        add(carOptionComparePanel, BorderLayout.SOUTH);
     }
 }
