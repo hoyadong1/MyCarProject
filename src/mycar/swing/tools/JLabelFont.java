@@ -1,4 +1,4 @@
-package mycar.purchasecar.swing;
+package mycar.swing.tools;
 
 import java.awt.Font;
 import javax.swing.JLabel;
