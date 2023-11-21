@@ -41,4 +41,7 @@ public class Option implements Manageable {
         return false;
     }
 
+    public String getName() {
+        return name;
+    }
 }
