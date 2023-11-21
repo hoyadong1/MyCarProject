@@ -3,6 +3,7 @@ package manager;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Manager<T extends Manageable> {
@@ -61,4 +62,17 @@ public class Manager<T extends Manageable> {
         return null;
     }
 
+    public List<T> findAll(String kwd) {
+        List<T> result = new ArrayList<>();
+        for (T m : mList) {
+            if (m.matches(kwd)) {
+                result.add(m);
+            }
+        }
+        return result;
+    }
+
+    public void addElement(T e) {
+        mList.add(e);
+    }
 }
