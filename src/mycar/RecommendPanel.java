@@ -37,7 +37,7 @@ public class RecommendPanel extends JPanel {
         this.setLayout(null);
         this.setVisible(false);
 
-        JLabel lblNewLabel1 = new JLabel("enter car sepcs");
+        JLabel lblNewLabel1 = new JLabel("차량 스펙 입력");
         lblNewLabel1.setFont(new Font("굴림", Font.BOLD, 30));
         lblNewLabel1.setBounds(359, 10, 244, 60);
         this.add(lblNewLabel1);
@@ -90,20 +90,24 @@ public class RecommendPanel extends JPanel {
         endFuelEffi.setBounds(175, 377, 84, 28);
         this.add(endFuelEffi);
 
-        JLabel lblNewLabel_1 = new JLabel("Price range");
+        JLabel lblNewLabel_1 = new JLabel("가격 범위");
+        lblNewLabel_1.setFont(new Font("굴림", Font.BOLD, 16));
         lblNewLabel_1.setBounds(110, 121, 89, 36);
         this.add(lblNewLabel_1);
 
-        JLabel lblNewLabel_1_1 = new JLabel("Car year range");
+        JLabel lblNewLabel_1_1 = new JLabel("  연식 범위");
+        lblNewLabel_1_1.setFont(new Font("굴림", Font.BOLD, 16));
         lblNewLabel_1_1.setBounds(438, 121, 101, 36);
         this.add(lblNewLabel_1_1);
 
-        JLabel lblNewLabel_1_2 = new JLabel("Fuel efficient range");
+        JLabel lblNewLabel_1_2 = new JLabel("    연비 범위");
+        lblNewLabel_1_2.setFont(new Font("굴림", Font.BOLD, 16));
         lblNewLabel_1_2.setBounds(86, 331, 117, 36);
         this.add(lblNewLabel_1_2);
 
-        JLabel lblNewLabel_1_3 = new JLabel("Car power range");
-        lblNewLabel_1_3.setBounds(438, 331, 101, 36);
+        JLabel lblNewLabel_1_3 = new JLabel("출력(마력) 범위");
+        lblNewLabel_1_3.setFont(new Font("굴림", Font.BOLD, 16));
+        lblNewLabel_1_3.setBounds(422, 331, 117, 36);
         this.add(lblNewLabel_1_3);
 
         JLabel lblNewLabel_2 = new JLabel("  ~");
@@ -126,22 +130,19 @@ public class RecommendPanel extends JPanel {
         lblNewLabel_5.setBounds(460, 383, 57, 15);
         this.add(lblNewLabel_5);
 
-        lblNewLabel_1_4 = new JLabel("Choose the fuel");
-        lblNewLabel_1_4.setBounds(744, 121, 89, 36);
+        lblNewLabel_1_4 = new JLabel("연료 선택");
+        lblNewLabel_1_4.setFont(new Font("굴림", Font.BOLD, 18));
+        lblNewLabel_1_4.setBounds(735, 122, 89, 36);
         this.add(lblNewLabel_1_4);
 
         list = new JList<>();
         list.setFont(new Font("굴림", Font.BOLD, 37));
-        list.setModel(new AbstractListModel<String>() {
-            private static final long serialVersionUID = 1L;
-            String[] values = new String[] {"Gasoline", "", "LPG", "", "Diesel", "", "Electric", "",
-                    "Hybrid"};
-
+        list.setModel(new AbstractListModel() {
+            String[] values = new String[] {"가솔린", "", "LPG", "", "디젤", "", "전기", "", "하이브리드"};
             public int getSize() {
                 return values.length;
             }
-
-            public String getElementAt(int index) {
+            public Object getElementAt(int index) {
                 return values[index];
             }
         });

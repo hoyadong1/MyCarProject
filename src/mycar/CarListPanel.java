@@ -14,6 +14,15 @@ public class CarListPanel extends JPanel {
     private JTable carTable;
     String[] columnNames;
     DefaultTableModel model; 
+    
+    public JTable getCarTable() {
+        return carTable;
+    }
+
+    public void setCarTable(JTable carTable) {
+        this.carTable = carTable;
+    }
+
     /**
      * 
      */
@@ -27,7 +36,7 @@ public class CarListPanel extends JPanel {
         this.setLayout(null);
         this.setVisible(false);
 
-        JLabel lblNewLabel = new JLabel("List of cars that match the specs");
+        JLabel lblNewLabel = new JLabel("입력한 스펙에 맞는 차량 리스트");
         lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 30));
         lblNewLabel.setBounds(12, 10, 498, 36);
         this.add(lblNewLabel);

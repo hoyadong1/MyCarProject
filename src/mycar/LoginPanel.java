@@ -12,14 +12,10 @@ public class LoginPanel extends JPanel {
     JTextField idField;
     JPasswordField passwordField;
 
-    /**
-     * 
-     */
+   
     private static final long serialVersionUID = 1L;
 
-    /**
-     * Create the panel.
-     */
+    
     public LoginPanel() {
         ImagePanel loginImage = new ImagePanel(new ImageIcon("./images/Login.jpg").getImage());
 
@@ -57,6 +53,11 @@ public class LoginPanel extends JPanel {
         passwordField.setFont(new Font("Constantia", Font.BOLD, 25));
         passwordField.setBounds(82, 261, 258, 32);
         this.add(passwordField);
+        
+        JLabel madeBy = new JLabel("Made by A조");
+        madeBy.setFont(new Font("굴림", Font.ITALIC, 14));
+        madeBy.setBounds(12, 10, 95, 15);
+        add(madeBy);
     }
 
 }

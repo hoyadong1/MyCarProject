@@ -3,27 +3,21 @@ package mycar;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.ImageIcon;
-
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionListener;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 import javax.swing.JButton;
-import java.awt.Color;
 
 public class Start1 {
 
-    CarRange CR = new CarRange();
     static Object[][] data;
     MyCarProgram mcp;
     
-    private JFrame MyCarProgram;
+    public static JFrame MyCarProgram;
 
     public static void main(String[] args) {
         MyCarProgram mcp = new MyCarProgram();
@@ -49,7 +43,8 @@ public class Start1 {
 
     private void initialize() {
         MyCarProgram = new JFrame();
-        MyCarProgram.setBounds(500, 250, 903, 384);
+        MyCarProgram.setBounds(500, 250, 1200, 800);
+        //MyCarProgram.setBounds(500, 250, 903, 384);
         MyCarProgram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         MyCarProgram.getContentPane().setLayout(null);
 
@@ -107,16 +102,14 @@ public class Start1 {
 
         // =====================================================================================================================================
 
-
         loginBt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String id = "1234";
                 String pw = "1234";
-
                 if (id.equals(login.idField.getText()) && pw.equals(login.passwordField.getText())) {
                     JOptionPane.showMessageDialog(null, "로그인에 성공했습니다.");
-                    MyCarProgram.setBounds(500, 250, 980, 562);
+                    MyCarProgram.setSize(1200, 800);
                     login.setVisible(false);
                     mainPage.setVisible(true);
                 } else {
@@ -138,6 +131,7 @@ public class Start1 {
         recommendSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                CarRange CR = new CarRange();
                 CR.read(Integer.parseInt(recommendPanel.startPrice.getText()),
                         Integer.parseInt(recommendPanel.endPrice.getText()),
                         Integer.parseInt(recommendPanel.startYear.getText()),
@@ -160,5 +154,6 @@ public class Start1 {
                 mainPage.setVisible(true);
             }
         });
+        
     }
 }
