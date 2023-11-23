@@ -20,7 +20,7 @@ public class Option implements Manageable {
 
     @Override
     public void print() {
-        System.out.printf("%s %d %d %n", name, price, fixPrice);
+        System.out.printf("%s %d %n", name, price);
         System.out.println("--리뷰--");
         if (reviews == null) {
             System.out.println("리뷰가 없습니다.");
@@ -41,5 +41,9 @@ public class Option implements Manageable {
 
     public String getName() {
         return name;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
     }
 }

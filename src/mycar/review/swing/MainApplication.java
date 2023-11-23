@@ -14,7 +14,7 @@ public class MainApplication {
             public void run() {
                 JFrame frame = new JFrame("Main Application");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setSize(964, 523);
+                frame.setSize(1000, 500);
 
                 MyCarProgram myCarProgram = new MyCarProgram();
                 myCarProgram.run();
@@ -23,7 +23,6 @@ public class MainApplication {
 
                 JPanel reviewMainPanel = new ReviewMainPanel(testOption);
                 frame.add(reviewMainPanel);
-
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
             }

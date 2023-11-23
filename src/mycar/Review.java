@@ -30,4 +30,12 @@ public class Review implements Manageable {
         }
         return false;
     }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public String getReviewComment() {
+        return reviewComment;
+    }
 }
