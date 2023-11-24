@@ -1,8 +1,10 @@
 package mycar;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Scanner;
 
 public class MyCarProgram {
+
     static Manager<Car> carMgr = new Manager<>();
     static Manager<Part> partMgr = new Manager<>();
     static Manager<Option> optionMgr = new Manager<>();
@@ -10,10 +12,12 @@ public class MyCarProgram {
     static Manager<RepairShop> repairShopMgr = new Manager<>();
     static Manager<Review> reviewMgr = new Manager<>();
 
+    static Manager<Review> reviewManager = new Manager<>();
     Scanner scan = new Scanner(System.in);
 
     public void run() {
-        optionMgr.readAll("Option_u.txt", new Factory<Option>() {
+        reviewManager.readAll("Review.txt", scan -> new Review());
+        optionMgr.readAll("Option.txt", new Factory<Option>() {
             public Option create(Scanner scan) {
                 return new Option();
             }
@@ -23,11 +27,12 @@ public class MyCarProgram {
                 return new Part();
             }
         });
-        carMgr.readAll("Car_u.txt", new Factory<Car>() {
+        carMgr.readAll("Car.txt", new Factory<Car>() {
             public Car create(Scanner scan) {
                 int n = scan.nextInt();
-                if (n == 1)
+                if (n == 1) {
                     return new Car();
+                }
                 return new ElectricCar();
 
             }
@@ -49,8 +54,9 @@ public class MyCarProgram {
         while (true) {
             System.out.print("(1)차량추천 (2)차량구매견적 (3)차량매물검색 (4)수리 및 교체 (기타) 종료 ");
             num = scan.nextInt();
-            if (num < 1 || num > 4)
+            if (num < 1 || num > 4) {
                 break;
+            }
             switch (num) {
                 case 1:
                     RecommendCar();
@@ -90,8 +96,9 @@ public class MyCarProgram {
                     exists = true;
                 }
             }
-            if (!exists)
+            if (!exists) {
                 System.out.println("해당 부품이 정비소에 존재하지 않습니다.");
+            }
         } else {
             System.out.println("해당 부품이 존재하지 않습니다.");
         }
@@ -107,7 +114,7 @@ public class MyCarProgram {
             if (store.haveCar(findingCar)) {
                 carExists = true;
                 System.out.println(store.name + " " + store.location + " : "
-                        + store.carList.get(findingCar) + "대");
+                    + store.carList.get(findingCar) + "대");
             }
         }
         if (!carExists) {
@@ -148,8 +155,9 @@ public class MyCarProgram {
         CR.read(scan);
         System.out.println("당신이 원하는 스펙에 맞는 차량 리스트입니다.");
         for (Car c : carMgr.mList) {
-            if (c.isRange(CR))
+            if (c.isRange(CR)) {
                 c.print();
+            }
         }
     }
 
@@ -177,8 +185,9 @@ public class MyCarProgram {
     public void makeRecommendList(CarRange cr) {
         int row = 0;
         for (Car c : carMgr.mList) {
-            if (c.isRange(cr))
+            if (c.isRange(cr)) {
                 row = c.insertSelf(row);
+            }
         }
     }
 

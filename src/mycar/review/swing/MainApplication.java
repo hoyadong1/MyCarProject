@@ -1,10 +1,10 @@
-package mycar.purchasecar.swing;
+package mycar.review.swing;
 
-import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import mycar.Car;
 import mycar.MyCarProgram;
+import mycar.Option;
 
 public class MainApplication {
 
@@ -14,17 +14,15 @@ public class MainApplication {
             public void run() {
                 JFrame frame = new JFrame("Main Application");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setSize(964, 530);
+                frame.setSize(1000, 500);
 
                 MyCarProgram myCarProgram = new MyCarProgram();
                 myCarProgram.run();
 
-                Car tempCar = MyCarProgram.findCar("모닝");
-                PurchaseCarComparePanel comparisonPanel = new PurchaseCarComparePanel(tempCar,
-                    null);
-                frame.add(comparisonPanel);
+                Option testOption = MyCarProgram.findOption("8인치내비게이션(120)");
 
-                frame.getContentPane().setBackground(Color.BLUE);
+                JPanel reviewMainPanel = new ReviewMainPanel(testOption);
+                frame.add(reviewMainPanel);
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
             }
