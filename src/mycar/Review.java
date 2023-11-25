@@ -1,6 +1,7 @@
 package mycar;
 
 import java.util.Scanner;
+import manager.Manageable;
 
 public class Review implements Manageable {
 
@@ -29,13 +30,5 @@ public class Review implements Manageable {
             return true;
         }
         return false;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public String getReviewComment() {
-        return reviewComment;
     }
 }

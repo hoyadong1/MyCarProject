@@ -3,6 +3,9 @@ package mycar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Scanner;
+import manager.Manageable;
 
 
 public class Car implements Manageable {

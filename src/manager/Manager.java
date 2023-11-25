@@ -1,11 +1,14 @@
-package mycar;
+package manager;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Manager<T extends Manageable> {
-    ArrayList<T> mList = new ArrayList<>();
+
+    public ArrayList<T> mList = new ArrayList<>();
 
     public Scanner openFile(String filename) {
         Scanner filein = null;
@@ -39,32 +42,37 @@ public class Manager<T extends Manageable> {
         while (true) {
             System.out.print(">> ");
             kwd = scan.next();
-            if (kwd.equals("end")){
+            if (kwd.equals("end")) {
                 break;
-            }for (T m : mList) {
-                if (m.matches(kwd)){
+            }
+            for (T m : mList) {
+                if (m.matches(kwd)) {
                     m.print();
+                }
             }
         }
-    }}
+    }
 
     public T find(String kwd) {
         for (T m : mList) {
-            if (m.matches(kwd))
-                {
-				return m;
-			}
+            if (m.matches(kwd)) {
+                return m;
+            }
         }
         return null;
     }
 
     public List<T> findAll(String kwd) {
-        List<T> foundList = new ArrayList<>();
+        List<T> result = new ArrayList<>();
         for (T m : mList) {
             if (m.matches(kwd)) {
-                foundList.add(m);
+                result.add(m);
             }
         }
-        return foundList.isEmpty() ? null : foundList;
+        return result.isEmpty() ? null : result;
+    }
+
+    public void addElement(T e) {
+        mList.add(e);
     }
 }
