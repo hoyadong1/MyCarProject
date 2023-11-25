@@ -3,8 +3,6 @@ package mycar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Scanner;
 import manager.Manageable;
 
 
@@ -145,8 +143,12 @@ public class Car implements Manageable {
     public List<String> getOptionListName() {
         ArrayList<String> optionListName = new ArrayList<>();
         for (Option option : optionList) {
-            optionListName.add(option.name);
+            if (option != null) {
+                optionListName.add(option.name);
+
+            }
         }
+
         return optionListName;
     }
 

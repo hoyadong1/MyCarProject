@@ -2,6 +2,7 @@ package mycar.purchasecar.swing;
 
 import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import mycar.Car;
 import mycar.MyCarProgram;
@@ -14,7 +15,7 @@ public class MainApplication {
             public void run() {
                 JFrame frame = new JFrame("Main Application");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setSize(964, 530);
+                frame.setSize(1200, 800);
 
                 MyCarProgram myCarProgram = new MyCarProgram();
                 myCarProgram.run();
@@ -22,8 +23,12 @@ public class MainApplication {
                 Car tempCar = MyCarProgram.findCar("모닝");
                 PurchaseCarComparePanel comparisonPanel = new PurchaseCarComparePanel(tempCar,
                     null);
-                frame.add(comparisonPanel);
+                //frame.add(comparisonPanel);
 
+                //CarSelectPanel test = new CarSelectPanel();
+                JPanel test = new CarOptionSelect();
+
+                frame.add(test);
                 frame.getContentPane().setBackground(Color.BLUE);
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);

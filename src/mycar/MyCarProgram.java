@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 import manager.CarManager;
 import manager.CarStoreManager;
+import manager.Manager;
 import manager.OptionManager;
 import manager.PartManager;
 import manager.RepairShopManager;
@@ -153,7 +154,7 @@ public class MyCarProgram {
         return PartManager.getInstance().find(kwd);
     }
 
-    private HashSet<String> CarTypeArray() {
+    public HashSet<String> CarTypeArray() {
         // TODO arrlylist 아무거나 입력받아도 특정 키워드로 중복제거하는 기능 제작
         HashSet<String> carType = new HashSet<>();
         for (Car car : CarManager.getInstance().mList) {

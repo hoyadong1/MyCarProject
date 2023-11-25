@@ -45,7 +45,6 @@ public class PurchaseCarComparePanel extends JPanel {
         JPanel nonePanel = new JPanel();
         nonePanel.setPreferredSize(new Dimension(40, 460));
         makeGridBag(nonePanel, 40, 0, 4, 46);
-        gridBagConstraints.weighty = 0.1;
         add(nonePanel, gridBagConstraints);
 
         JPanel basketCarPanel = new CarInformationPanel(basketCar);
