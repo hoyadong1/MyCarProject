@@ -1,9 +1,9 @@
 package mycar;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import manager.Manageable;
+import manager.ReviewManager;
 
 public class Option implements Manageable {
 
@@ -16,7 +16,7 @@ public class Option implements Manageable {
     public void read(Scanner scan) {
         name = scan.next();
         price = scan.nextInt();
-        reviews = MyCarProgram.reviewManager.findAll(name);
+        reviews = ReviewManager.getInstance().findAll(name);
 
     }
 
@@ -39,6 +39,19 @@ public class Option implements Manageable {
             return true;
         }
         return false;
+    }
+
+    public double avgReview() {
+        int sum = 0;
+        if (reviews == null) {
+            return 0;
+        } else {
+            for (Review review : reviews) {
+                sum += review.rating;
+            }
+            return (double) sum / reviews.size();
+        }
+
     }
 
     public String getName() {
