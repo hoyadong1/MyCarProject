@@ -17,7 +17,7 @@ public class MainPanel extends JPanel {
         setPreferredSize(new Dimension(1200, 800));
         CarSelectPanel panel1 = new CarSelectPanel();
 
-        add(panel1);
+        add(panel1, "panel1");
     }
 
     public static MainPanel getInstance() {

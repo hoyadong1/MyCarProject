@@ -12,6 +12,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -46,10 +47,11 @@ public class SelectOptionListPanel extends JPanel{
 		scrolled.setPreferredSize(new Dimension(800, 500)); 
 		
 		selectOptionJList.setBackground(Color.green);
-		
+
 		setBackground(Color.blue);
 		add(scrolled);
 		setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
+
 	}
 	
 }
