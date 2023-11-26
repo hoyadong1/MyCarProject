@@ -62,7 +62,7 @@ public class CarOptionSelect extends JPanel{
 				optionJList.makeList.clearSelection();
 				//클릭 시 총합 가격 변동
 				for(Option option : optionJList.optionList.mList) {
-					if((option.getName()+option.getPrice()).equals(data)) {
+					if((option.getName()).equals(data)) {
 						calNum += option.getPrice();
 						car.addOptionList(option);
 					}
@@ -82,7 +82,7 @@ public class CarOptionSelect extends JPanel{
 				//클릭 시 총합 가격 변동
 				for(Option option : optionJList.optionList.mList) {
 					if((option.getName()).equals(data))
-						calNum += option.getPrice();
+						calNum -= option.getPrice();
 				}
 			}
 		};
