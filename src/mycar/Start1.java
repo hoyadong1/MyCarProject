@@ -13,6 +13,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
+
+import mycar.selectoption.swing.CarOptionSelect;
+
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.Color;
@@ -46,7 +49,6 @@ public class Start1 {
     public Start1() {
         initialize();
     }
-
     private void initialize() {
         MyCarProgram = new JFrame();
         MyCarProgram.setBounds(500, 250, 903, 384);
@@ -106,6 +108,16 @@ public class Start1 {
         mainPage.add(repairEstimate);
 
         // =====================================================================================================================================
+        
+        CarOptionSelect testPage = new CarOptionSelect(null);
+        MyCarProgram.getContentPane().add(testPage);
+        purchaseEstimate.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		mainPage.setVisible(false);
+        		testPage.setVisible(true);
+        	}
+        });
 
 
         loginBt.addActionListener(new ActionListener() {

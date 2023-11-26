@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import mycar.Car;
 import mycar.MyCarProgram;
+import mycar.selectoption.swing.CarOptionSelect;
 
 public class MainApplication {
 
@@ -26,7 +27,7 @@ public class MainApplication {
                 //frame.add(comparisonPanel);
 
                 //CarSelectPanel test = new CarSelectPanel();
-                JPanel test = new CarOptionSelect();
+                JPanel test = new CarOptionSelect(tempCar);
 
                 frame.add(test);
                 frame.getContentPane().setBackground(Color.BLUE);

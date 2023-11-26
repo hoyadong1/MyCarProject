@@ -3,37 +3,36 @@ package mycar.selectoption.swing;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import mycar.Car;
-import mycar.MyCarProgram;
 import mycar.Option;
+import mycar.User;
+import mycar.purchasecar.swing.PurchaseCarComparePanel;
 
 public class CarOptionSelect extends JPanel{
 	JFrame frame;
 	JTextField totalCal;
 	int calNum = 0;
-	Option option;
 	public CarOptionSelect(Car car) {
 		//프레임 크기(실행용)
 		frame = new JFrame("test");
-		
-        frame.setSize(964, 530);
-		frame.setLocation(700, 200);
+		frame.setSize(964, 530);
+		frame.setLocation(400, 250);
+		setSize(964, 530);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container contentPane = frame.getContentPane();
+		
+		//차 가격
+		if(car!=null)
+			calNum = car.getCarPrice();
+		else
+			calNum = 0;
 		
 		//메인 페널 생성
 		setLayout(new BorderLayout());
@@ -51,6 +50,8 @@ public class CarOptionSelect extends JPanel{
 		selectOptionList.add(totalCalP);
 
 		add(selectOptionList, BorderLayout.WEST);
+
+		
 		//전체 옵션 표기	(버튼 포함)(버튼 기능 구현)
 		//============================================================
 		//추가 버튼================================================
@@ -58,16 +59,18 @@ public class CarOptionSelect extends JPanel{
         ActionListener listener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				option = new Option();
 				String data = optionJList.makeList.getSelectedValue();
 				selectOptionList.selectCarOptionModel.addElement(data);
 				optionJList.makeList.clearSelection();
-				/*
-				for(String optionName : ) {
-					if(option.matches(data))
+				//클릭 시 총합 가격 변동
+				for(Option option : optionJList.optionList.mList) {
+					if((option.getName()+option.getPrice()).equals(data)) {
 						calNum += option.getPrice();
+						car.addOptionList(option);
+					}
+						
 				}
-				*/
+				
 			}
 		};
 		optionJList.btnPanel.plusBtn.addActionListener(listener);
@@ -75,41 +78,58 @@ public class CarOptionSelect extends JPanel{
 		ActionListener deleteListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				selectOptionList.selectCarOptionModel.removeElement(selectOptionList.tempJList.getSelectedValue());
+				String data = selectOptionList.tempJList.getSelectedValue();
+				selectOptionList.selectCarOptionModel.removeElement(data);
 				optionJList.makeList.clearSelection();
-				/*
-				for(String optionName : car.getOptionListName()) {
-					if(option.matches(selectOptionList.selectCarOptionModel))
+				//클릭 시 총합 가격 변동
+				for(Option option : optionJList.optionList.mList) {
+					if((option.getName()+option.getPrice()).equals(data))
 						calNum += option.getPrice();
 				}
-				*/
 			}
 		};
 		totalCalP.deleteBtn.addActionListener(deleteListener);
 		//계산 버튼 ===============================================
-		/*
 		ActionListener calListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for(DefaultListModel j : selectOptionList.selectCarOptionModel) {
-					
-				}
 				totalCalP.totalCal.setText("합계 : "+ calNum);
 			}
 		};
 		
 		optionJList.btnPanel.calBtn.addActionListener(calListener);
-		*/
+		
+		//저장 버튼 ===============================================
+		ActionListener saveListener = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				User saveOp = User.getInstance();
+				saveOp.addBasket(car);
+			}
+		};
+		optionJList.btnPanel.saveBtn.addActionListener(saveListener);
+		//견적 버튼 ===============================================
+		ActionListener compareListener = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JPanel comparePanel = new PurchaseCarComparePanel(car, null);
+				frame.add(comparePanel);
+				setVisible(false);
+				comparePanel.setVisible(true);
+				
+			}
+		};
+		
+		optionJList.btnPanel.compareBtn.addActionListener(compareListener);
+		
 		add(optionJList);
 		//============================================================
 		contentPane.add(this);
 		
 		frame.setVisible(true);
 	}
-	public static void main(String[] args) {
-		new CarOptionSelect(null);
-		
-	}
-	
+    public static void main(String[] args) {
+    	new CarOptionSelect(null);
+    }
 	
 }
