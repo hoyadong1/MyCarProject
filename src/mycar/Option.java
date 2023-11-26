@@ -61,4 +61,9 @@ public class Option implements Manageable {
     public List<Review> getReviews() {
         return reviews;
     }
+
+	public int getPrice() {
+		// TODO Auto-generated method stub
+		return price;
+	}
 }
