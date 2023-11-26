@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Start1 {
 
@@ -62,8 +65,10 @@ public class Start1 {
 
         RecommendPanel recommendPanel = new RecommendPanel();
         
-        JButton recommendSubmit = new JButton("Submit");
-        recommendSubmit.setBounds(736, 444, 97, 23);
+        JButton recommendSubmit = new JButton("");
+        recommendSubmit.setIcon(new ImageIcon("C:\\Users\\Lenovo\\eclipse-workspace\\MyCarProject\\images\\submit.jpg"));
+        recommendSubmit.setFont(new Font("휴먼둥근헤드라인", Font.BOLD, 20));
+        recommendSubmit.setBounds(851, 666, 176, 53);
         recommendPanel.add(recommendSubmit);
         MyCarProgram.getContentPane().add(recommendPanel);
 
@@ -72,32 +77,49 @@ public class Start1 {
 
 
         LoginPanel login = new LoginPanel();
+        login.setBackground(Color.LIGHT_GRAY);
+        login.setBounds(0, 0, 1194, 761);
         MyCarProgram.getContentPane().add(login);
 
-        JButton loginBt = new JButton("Login");
+        JButton loginBt = new JButton("");
+        loginBt.setIcon(new ImageIcon("C:\\Users\\Lenovo\\eclipse-workspace\\MyCarProject\\images\\제목 없음.jpg"));
         loginBt.setFont(new Font("Constantia", Font.BOLD, 15));
-        loginBt.setBounds(249, 317, 91, 21);
+        loginBt.setBounds(255, 454, 176, 53);
         login.add(loginBt);
+        
+        //==================================================================================================================================
+
 
         // //================================================================================================================================
 
         MainPagePanel mainPage = new MainPagePanel();
         MyCarProgram.getContentPane().add(mainPage);
+        
+        //===================================================================================================================================
+        
+        
+        CarStoreListPanel carStoreListPanel = new CarStoreListPanel(mcp, CarList, mainPage);
+        MyCarProgram.getContentPane().add(carStoreListPanel);
 
+        SearchPanel searchCarPanel = new SearchPanel(mcp, carStoreListPanel);
+        MyCarProgram.getContentPane().add(searchCarPanel);
+
+        //===================================================================================================================================
+        
         JButton carRecommend = new JButton("carRecommend");
-        carRecommend.setBounds(33, 0, 383, 218);
+        carRecommend.setBounds(70, 130, 383, 218);
         mainPage.add(carRecommend);
 
         JButton purchaseEstimate = new JButton("purchaseEstimate");
-        purchaseEstimate.setBounds(33, 257, 383, 229);
+        purchaseEstimate.setBounds(70, 500, 383, 229);
         mainPage.add(purchaseEstimate);
 
         JButton carSearch = new JButton("carSearch");
-        carSearch.setBounds(555, 0, 383, 218);
+        carSearch.setBounds(710, 130, 383, 218);
         mainPage.add(carSearch);
 
         JButton repairEstimate = new JButton("repairEstimate");
-        repairEstimate.setBounds(555, 262, 383, 218);
+        repairEstimate.setBounds(710, 500, 383, 218);
         mainPage.add(repairEstimate);
 
         // =====================================================================================================================================
@@ -126,6 +148,14 @@ public class Start1 {
                 recommendPanel.setVisible(true);
             }
 
+        });
+        
+        carSearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainPage.setVisible(false);
+                searchCarPanel.setVisible(true);
+            }
         });
 
         recommendSubmit.addActionListener(new ActionListener() {
