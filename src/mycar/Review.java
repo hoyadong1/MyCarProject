@@ -19,7 +19,8 @@ public class Review implements Manageable {
 
     @Override
     public void print() {
-        System.out.printf(" rating : [%d] comment : %s %n", rating, reviewComment);
+        System.out.printf("%s rating : [%d] comment : %s %n", optionName, rating,
+            reviewComment);
     }
 
     @Override
