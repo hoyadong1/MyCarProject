@@ -6,7 +6,6 @@ import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -96,16 +95,11 @@ public class CarComparePanel extends JPanel {
             null);
 
         if (result == JOptionPane.OK_OPTION) {
-            // 사용자가 OK 버튼을 눌렀을 때 선택된 항목 출력
             String selectedOption = list.getSelectedValue();
             if (selectedOption != null) {
                 basketCar = User.getInstance().findCar(selectedOption);
                 basketCarPanel.updateCar(basketCar);
-            } else {
-                System.out.println("선택된 항목이 없습니다.");
             }
-        } else {
-            System.out.println("사용자가 선택을 취소했습니다.");
         }
     }
 
