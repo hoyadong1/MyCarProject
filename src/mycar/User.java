@@ -1,6 +1,7 @@
 package mycar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class User {
 
@@ -11,6 +12,10 @@ public class User {
         basket.add(car);
     }
 
+    public List<Car> getList() {
+        return basket;
+    }
+
     public static User getInstance() {
         if (instance == null) {
             instance = new User();
@@ -18,7 +23,16 @@ public class User {
         return instance;
     }
 
+    public Car findCar(String kwd) {
+        for (Car car : basket) {
+            if (car.matches(kwd)) {
+                return car;
+            }
+        }
+        return null;
+    }
+
     private User() {
-        
+
     }
 }
