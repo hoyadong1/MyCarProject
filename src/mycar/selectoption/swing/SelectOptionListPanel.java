@@ -35,15 +35,15 @@ public class SelectOptionListPanel extends JPanel{
     }
 
 	public SelectOptionListPanel(Car car) {
-		setPreferredSize(new Dimension(580, 400));
+		setPreferredSize(new Dimension(800, 600));
 		CarSelectLabelPanel carSelectLabel = new CarSelectLabelPanel(car);
-		carSelectLabel.setPreferredSize(new Dimension(580, 50));
+		carSelectLabel.setPreferredSize(new Dimension(800, 50));
 		add(carSelectLabel);
 		
 		JList<String> selectOptionJList = makeList(car);
 		
 		scrolled=new JScrollPane(selectOptionJList);
-		scrolled.setPreferredSize(new Dimension(580, 300)); 
+		scrolled.setPreferredSize(new Dimension(800, 500)); 
 		
 		selectOptionJList.setBackground(Color.green);
 		

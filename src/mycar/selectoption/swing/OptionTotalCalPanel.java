@@ -20,8 +20,8 @@ public class OptionTotalCalPanel extends JPanel{
 	public OptionTotalCalPanel() {
 		
 		totalCal = new JLabel("합계 : " + a);
-		setPreferredSize(new Dimension(530, 40));
-		totalCal.setPreferredSize(new Dimension(400, 20));
+		setPreferredSize(new Dimension(800, 40));
+		totalCal.setPreferredSize(new Dimension(600, 20));
 		deleteBtn = new JButton("삭제");
 		deleteBtn.setPreferredSize(new Dimension(70, 30));
         setBackground(Color.white);
