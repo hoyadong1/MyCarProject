@@ -2,10 +2,11 @@ package mycar.purchasecar.swing;
 
 import java.awt.Color;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import mycar.Car;
 import mycar.MyCarProgram;
+import mycar.User;
+import mycar.purchasecar.swing.comparepanel.PurchaseCarComparePanel;
 
 public class MainApplication {
 
@@ -21,14 +22,16 @@ public class MainApplication {
                 myCarProgram.run();
 
                 Car tempCar = MyCarProgram.findCar("모닝");
+                User.getInstance().addBasket(tempCar);
+
                 PurchaseCarComparePanel comparisonPanel = new PurchaseCarComparePanel(tempCar,
                     null);
-                //frame.add(comparisonPanel);
+                comparisonPanel.getObject(tempCar, null);
+                frame.add(comparisonPanel);
 
-                //CarSelectPanel test = new CarSelectPanel();
-                JPanel test = new CarOptionSelect();
+                CarSelectPanel test = new CarSelectPanel();
+                //frame.add(test);
 
-                frame.add(test);
                 frame.getContentPane().setBackground(Color.BLUE);
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);

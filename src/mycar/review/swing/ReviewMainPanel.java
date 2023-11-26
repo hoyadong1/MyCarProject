@@ -12,6 +12,7 @@ import mycar.swing.tools.LoadImage;
 
 public class ReviewMainPanel extends JPanel {
 
+    Option option;
     GridBagConstraints gridBagConstraints = new GridBagConstraints();
     GridBagLayout gridBagLayout = new GridBagLayout();
 
@@ -21,6 +22,10 @@ public class ReviewMainPanel extends JPanel {
         setBorder(new LineBorder(Color.BLACK, 2));
         gridBagConstraints.fill = GridBagConstraints.BOTH;
 
+    }
+
+    public void processGetOption(Option option) {
+        this.option = option;
     }
 
     private void makeGridBag(JComponent c, int x, int y, int w, int h) {
@@ -34,6 +39,7 @@ public class ReviewMainPanel extends JPanel {
     }
 
     public ReviewMainPanel(Option option) {
+        //TODO 옵션 받는거 수정;
         setting();
         JPanel optionImgPanel = new LoadImage("../../../images/none.png", 400, 400);
 

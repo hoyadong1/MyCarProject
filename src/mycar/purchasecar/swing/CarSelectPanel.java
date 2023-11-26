@@ -3,10 +3,13 @@ package mycar.purchasecar.swing;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashSet;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -23,15 +26,13 @@ public class CarSelectPanel extends JPanel {
 
     private Car selectCar = null;
     JLabel carName;
+    ButtonClickListener buttonClickListener = new ButtonClickListener();
 
     private void setting() {
         setLayout(null);
         setBackground(new Color(0xE8F1E8));
     }
 
-    private Car getSelectCar() {
-        return selectCar;
-    }
 
     private JList<String> makeList() {
         DefaultListModel<String> listModel = new DefaultListModel<>();
@@ -110,6 +111,15 @@ public class CarSelectPanel extends JPanel {
         }
     }
 
+    class ButtonClickListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //CarOptionSelect.processButtonClick(selectCar);
+
+        }
+    }
+
     public CarSelectPanel() {
         setting();
         JList<String> carList = makeList();
@@ -122,5 +132,15 @@ public class CarSelectPanel extends JPanel {
         carInfo.setLocation(600, 140);
         add(carInfo);
 
+        JButton backButton = new JButton("back");
+        backButton.setSize(179, 62);
+        backButton.setLocation(647, 598);
+        add(backButton);
+
+        JButton frontButton = new JButton("next");
+        frontButton.setSize(179, 62);
+        frontButton.setLocation(909, 598);
+        frontButton.addActionListener(buttonClickListener);
+        add(frontButton);
     }
 }
