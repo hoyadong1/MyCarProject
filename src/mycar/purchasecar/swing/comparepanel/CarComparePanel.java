@@ -32,9 +32,9 @@ public class CarComparePanel extends JPanel {
         setLayout(null);
         this.setBackground(new Color(133, 160, 222, 103));
 
-        for (Car car : userCarList.values()) {
+        for (String car : userCarList.keySet()) {
             System.out.println(car + ": 객체가 user에 있습니다");
-            carList.add(car.getCarName());
+            carList.add(car);
         }
     }
 
@@ -97,7 +97,7 @@ public class CarComparePanel extends JPanel {
 
         if (result == JOptionPane.OK_OPTION) {
             // 사용자가 OK 버튼을 눌렀을 때 선택된 항목 출력
-            String selectedOption = list.getSelectedValue();
+            String selectedOption = userCarList.get(list.getSelectedValue()).getCarName();
             if (selectedOption != null) {
                 basketCar = User.getInstance().findCar(selectedOption);
                 basketCarPanel.updateCar(basketCar);
