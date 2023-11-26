@@ -157,6 +157,24 @@ public class Car implements Manageable {
     }
 
     public int getCarPrice() {
-        return price;
+        int sum = price;
+        for (Option option : optionList) {
+            sum += option.price;
+        }
+        return sum;
+    }
+
+    public double getOptionRate() {
+        double sum = 0;
+        int optionCount = 0;
+        double avg = 0;
+        for (Option option : optionList) {
+            avg = option.avgReview();
+            if (avg != 0) {
+                optionCount++;
+            }
+            sum += avg;
+        }
+        return sum / optionCount;
     }
 }
