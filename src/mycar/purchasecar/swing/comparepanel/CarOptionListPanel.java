@@ -26,9 +26,7 @@ public class CarOptionListPanel extends JPanel {
     private void addList(Car car) {
         purchaseCarOptionModel.clear();
         if (car != null) {
-            System.out.println("리스트에 차량추가 : " + car.getCarName());
             for (String optionName : car.getOptionListName()) {
-                System.out.println(optionName);
                 purchaseCarOptionModel.addElement(optionName);
             }
         } else {
