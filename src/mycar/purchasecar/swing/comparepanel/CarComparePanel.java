@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -95,7 +96,8 @@ public class CarComparePanel extends JPanel {
             null);
 
         if (result == JOptionPane.OK_OPTION) {
-            String selectedOption = list.getSelectedValue();
+            // 사용자가 OK 버튼을 눌렀을 때 선택된 항목 출력
+            String selectedOption = userCarList.get(list.getSelectedValue()).getCarName();
             if (selectedOption != null) {
                 basketCar = User.getInstance().findCar(selectedOption);
                 basketCarPanel.updateCar(basketCar);
