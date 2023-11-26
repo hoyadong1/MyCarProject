@@ -14,6 +14,8 @@ import mycar.Car;
 
 public class CarOptionListPanel extends JPanel {
 
+    DefaultListModel<String> purchaseCarOptionModel = new DefaultListModel<>();
+
     private void setting() {
         setLayout(null);
         setBackground(new Color(88, 88, 241));
@@ -21,10 +23,10 @@ public class CarOptionListPanel extends JPanel {
         setBorder(new LineBorder(Color.black, 2));
     }
 
-    private JList<String> makeList(Car car) {
-        DefaultListModel<String> purchaseCarOptionModel = new DefaultListModel<>();
+    private void addList(Car car) {
+        purchaseCarOptionModel.clear();
         if (car != null) {
-            System.out.println("input car : " + car.getCarName());
+            System.out.println("리스트에 차량추가 : " + car.getCarName());
             for (String optionName : car.getOptionListName()) {
                 System.out.println(optionName);
                 purchaseCarOptionModel.addElement(optionName);
@@ -32,6 +34,15 @@ public class CarOptionListPanel extends JPanel {
         } else {
             purchaseCarOptionModel.addElement("없음");
         }
+    }
+
+    public void updateCar(Car car) {
+        System.out.println("list update");
+        addList(car);
+    }
+
+    private JList<String> makeList(Car car) {
+        addList(car);
         JList<String> tempJList;
         tempJList = new JList<>(purchaseCarOptionModel);
         tempJList.setPreferredSize(new Dimension(380, 260));

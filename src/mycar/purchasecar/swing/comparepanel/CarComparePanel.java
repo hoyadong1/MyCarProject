@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JList;
@@ -22,17 +23,17 @@ public class CarComparePanel extends JPanel {
     GridBagLayout gridBagLayout = new GridBagLayout();
     Car userMadeCar = null, basketCar = null;
     CarPanel userMadeCarPanel, basketCarPanel;
-    private static List<String> carList = new ArrayList<>();
+    private List<String> carList = new ArrayList<>();
+    List<Car> userCarList = User.getInstance().getList();
 
     private void setting() {
         setLayout(null);
         this.setBackground(new Color(133, 160, 222, 103));
 
-    }
-
-    public void getObject(Car car1, Car car2) {
-        userMadeCar = car1;
-        basketCar = car2;
+        for (Car car : userCarList) {
+            System.out.println(car + ": 객체가 user에 있습니다");
+            carList.add(car.getCarName());
+        }
     }
 
     private void makeGridBag(JComponent component, int x, int y, int w, int h) {
@@ -50,6 +51,7 @@ public class CarComparePanel extends JPanel {
             setLayout(null);
             setBackground(new Color(0x000A18));
             setBorder(new LineBorder(Color.black, 2));
+
         }
 
         private void makeGridBag(JComponent component, int x, int y, int w, int h) {
@@ -60,6 +62,7 @@ public class CarComparePanel extends JPanel {
 
         public void updateCar(Car car) {
             informationPanel.updateCar(car);
+            optionListPanel.updateCar(car);
         }
 
         public CarPanel(Car car) {
@@ -73,18 +76,17 @@ public class CarComparePanel extends JPanel {
     }
 
     private void showListPopup() {
-        for (Car car : User.getInstance().getList()) {
-            carList.add(car.getCarName());
+        DefaultListModel<String> carNames = new DefaultListModel<>();
+        for (String item : carList) {
+            carNames.addElement(item);
         }
-        String[] options = carList.toArray(new String[0]);
-
-        JList<String> list = new JList<>(options);
+        JList<String> list = new JList<>(carNames);
         JScrollPane scrollPane = new JScrollPane(list);
 
         int result = JOptionPane.showOptionDialog(
             null,
             scrollPane,
-            "리스트 선택",
+            "차량 선택",
             JOptionPane.OK_CANCEL_OPTION,
             JOptionPane.PLAIN_MESSAGE,
             null,
