@@ -31,9 +31,9 @@ public class AllOptionListPanel extends JPanel {
         optionList = OptionManager.getInstance();
         optionJList.addMouseListener(new MyMouseListener());
         if (car != null) {
-        	for(Option listTest : optionList.mList) {
-        		carOptionList.addElement(listTest.getName());
-        	}
+            for (Option listTest : optionList.mList) {
+                carOptionList.addElement(listTest.getName());
+            }
         } else {
             carOptionList.addElement("없음");
         }
@@ -54,6 +54,8 @@ public class AllOptionListPanel extends JPanel {
                 JDialog customDialog = new JDialog((Frame) null, "Option Review", true);
                 ReviewMainPanel panel = new ReviewMainPanel(option);
                 customDialog.add(panel);
+                customDialog.setSize(900, 500);
+                customDialog.setVisible(true);
             }
         }
     }
