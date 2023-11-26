@@ -34,7 +34,7 @@ public class AllOptionListPanel extends JPanel{
         optionJList.addMouseListener(new MyMouseListener());
         if (car != null) {
         	for(Option listTest : optionList.mList) {
-        		carOptionList.addElement(listTest.getName()+listTest.getPrice());
+        		carOptionList.addElement(listTest.getName());
         	}
         } else {
         	carOptionList.addElement("없음");

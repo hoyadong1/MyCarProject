@@ -5,6 +5,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -24,13 +26,13 @@ public class CarComparePanel extends JPanel {
     Car userMadeCar = null, basketCar = null;
     CarPanel userMadeCarPanel, basketCarPanel;
     private List<String> carList = new ArrayList<>();
-    List<Car> userCarList = User.getInstance().getList();
+    Map<String, Car> userCarList = User.getInstance().getList();
 
     private void setting() {
         setLayout(null);
         this.setBackground(new Color(133, 160, 222, 103));
 
-        for (Car car : userCarList) {
+        for (Car car : userCarList.values()) {
             System.out.println(car + ": 객체가 user에 있습니다");
             carList.add(car.getCarName());
         }
