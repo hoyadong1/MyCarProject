@@ -151,8 +151,13 @@ public class Car implements Manageable {
 
         return optionListName;
     }
+
     public void addOptionList(Option o) {
-    	optionList.add(o);
+        optionList.add(o);
+    }
+
+    public void removeOption() {
+        optionList.clear();
     }
 
     public String getCarName() {

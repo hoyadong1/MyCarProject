@@ -1,4 +1,4 @@
-package mycar.purchasecar.swing;
+package mycar.purchasecar.swing.carselect;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -19,6 +19,8 @@ import javax.swing.border.LineBorder;
 import manager.CarManager;
 import mycar.Car;
 import mycar.MyCarProgram;
+import mycar.purchasecar.swing.MainPanel;
+import mycar.selectoption.swing.CarOptionSelect;
 import mycar.swing.tools.JLabelFont;
 import mycar.swing.tools.LoadImage;
 
@@ -56,6 +58,7 @@ public class CarSelectPanel extends JPanel {
                 // 선택된 아이템 가져오기
                 String selectCarName = tempJList.getSelectedValue();
                 selectCar = MyCarProgram.findCar(selectCarName);
+                selectCar.removeOption();
                 carName.setText(selectCar.getCarName());
                 System.out.println(selectCar.getCarName());
             }
@@ -115,7 +118,9 @@ public class CarSelectPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            //CarOptionSelect.processButtonClick(selectCar);
+            CarOptionSelect carOptionSelect = new CarOptionSelect(selectCar);
+            MainPanel.getInstance().add(carOptionSelect, "panel2");
+            MainPanel.getInstance().showPanel("panel2");
 
         }
     }

@@ -14,8 +14,9 @@ import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 import mycar.Car;
 import mycar.User;
+import mycar.purchasecar.swing.MainPanel;
 
-public class PurchaseCarComparePanel extends JPanel {
+public class CarComparePanel extends JPanel {
 
     GridBagConstraints gridBagConstraints = new GridBagConstraints();
     GridBagLayout gridBagLayout = new GridBagLayout();
@@ -104,7 +105,15 @@ public class PurchaseCarComparePanel extends JPanel {
         }
     }
 
-    public PurchaseCarComparePanel(Car userMadeCar, Car basketCar) {
+    private void back() {
+        MainPanel.getInstance().showPanel("panel2");
+    }
+
+    private void next() {
+
+    }
+
+    public CarComparePanel(Car userMadeCar, Car basketCar) {
         setting();
 
         userMadeCarPanel = new CarPanel(userMadeCar);
@@ -115,11 +124,12 @@ public class PurchaseCarComparePanel extends JPanel {
 
         JButton backButton = new JButton("back");
         makeGridBag(backButton, 51, 687, 237, 60);
+        backButton.addActionListener(e -> back());
 
         JButton listButton = new JButton("List");
         makeGridBag(listButton, 633, 687, 237, 60);
         listButton.addActionListener(e -> showListPopup());
-        
+
         JButton nextButton = new JButton("next");
         makeGridBag(nextButton, 912, 687, 237, 60);
     }
