@@ -7,26 +7,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import mycar.Car;
 import mycar.Option;
 import mycar.User;
-import mycar.purchasecar.swing.PurchaseCarComparePanel;
+//import mycar.purchasecar.swing.PurchaseCarComparePanel;
 
 public class CarOptionSelect extends JPanel{
-	JFrame frame;
+	//JFrame frame;
 	JTextField totalCal;
 	int calNum = 0;
 	public CarOptionSelect(Car car) {
 		//프레임 크기(실행용)
-		frame = new JFrame("test");
-		frame.setSize(964, 530);
-		frame.setLocation(400, 250);
-		setSize(964, 530);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Container contentPane = frame.getContentPane();
+		//frame = new JFrame("test");
+		//frame.setSize(964, 530);
+		//frame.setLocation(400, 250);
+		setSize(1200, 800);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//Container contentPane = frame.getContentPane();
 		
 		//차 가격
 		if(car!=null)
@@ -100,11 +101,15 @@ public class CarOptionSelect extends JPanel{
 		optionJList.btnPanel.calBtn.addActionListener(calListener);
 		
 		//저장 버튼 ===============================================
+		
 		ActionListener saveListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				User saveOp = User.getInstance();
 				saveOp.addBasket(car);
+				
+				String answer = JOptionPane.showInputDialog("견적 이름을 입력해주세요.");
+				JOptionPane.showMessageDialog(null, saveOp.getList().size() + "번에 저장되었습니다.", "저장 알림", JOptionPane.INFORMATION_MESSAGE);
 			}
 		};
 		optionJList.btnPanel.saveBtn.addActionListener(saveListener);
@@ -112,10 +117,10 @@ public class CarOptionSelect extends JPanel{
 		ActionListener compareListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JPanel comparePanel = new PurchaseCarComparePanel(car, null);
-				frame.add(comparePanel);
+				//JPanel comparePanel = new PurchaseCarComparePanel(car, null);
+				//frame.add(comparePanel);//프레임 부분에 선언해야함.
 				setVisible(false);
-				comparePanel.setVisible(true);
+				//comparePanel.setVisible(true);
 				
 			}
 		};
@@ -124,9 +129,9 @@ public class CarOptionSelect extends JPanel{
 		
 		add(optionJList);
 		//============================================================
-		contentPane.add(this);
+		//contentPane.add(this);
 		
-		frame.setVisible(true);
+		//frame.setVisible(true);
 	}
     public static void main(String[] args) {
     	new CarOptionSelect(null);
