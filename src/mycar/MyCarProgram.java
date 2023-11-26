@@ -8,6 +8,7 @@ import manager.Manager;
 import manager.OptionManager;
 import manager.PartManager;
 import manager.RepairShopManager;
+import manager.ReviewManager;
 
 public class MyCarProgram {
 
@@ -15,6 +16,8 @@ public class MyCarProgram {
     Scanner scan = new Scanner(System.in);
 
     public void run() {
+        ReviewManager.getInstance().readAll("Review.txt", scan -> new Review());
+        ReviewManager.getInstance().printAll();
         OptionManager.getInstance().readAll("Option.txt", scan -> new Option());
         PartManager.getInstance().readAll("Part.txt", scan -> new Part());
         CarManager.getInstance().readAll("Car.txt", scan -> {
@@ -27,7 +30,8 @@ public class MyCarProgram {
         CarStoreManager.getInstance().readAll("CarStore.txt", scan -> new CarStore());
         RepairShopManager.getInstance().readAll("RepairShop.txt", scan -> new RepairShop());
 
-
+        OptionManager.getInstance().printAll();
+        //CarManager.getInstance().printAll();
     }
 
     private void Menu() {
