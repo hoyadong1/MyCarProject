@@ -105,7 +105,7 @@ public class CarOptionSelect extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				User saveOp = User.getInstance();
 				String answer = JOptionPane.showInputDialog("견적 이름을 입력해주세요.");
-				JOptionPane.showMessageDialog(null, saveOp.getList().size()+1 + "번에 저장되었습니다.", "저장 알림", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, answer+"가 저장되었습니다.", "저장 알림", JOptionPane.INFORMATION_MESSAGE);
 				saveOp.addBasket(answer, car);
 			}
 		};
