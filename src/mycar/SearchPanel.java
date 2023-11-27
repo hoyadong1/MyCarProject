@@ -1,6 +1,7 @@
 package mycar;
 
 import javax.swing.*;
+import manager.CarStoreManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,7 +51,7 @@ public class SearchPanel extends JPanel {
                 if (findingCar != null) {
                     ArrayList<Object[]> rows = new ArrayList<>();
                     boolean carExists = false;
-                    for (CarStore store : mcp.carStoreMgr.mList) {
+                    for (CarStore store : CarStoreManager.getInstance().mList) {
                         if (store.haveCar(findingCar)) {
                             carExists = true;
                             rows.add(new Object[]{store.name, store.location, store.carList.get(findingCar)});

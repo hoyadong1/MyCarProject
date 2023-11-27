@@ -18,35 +18,34 @@ public class MainPagePanel extends JPanel {
      */
     public MainPagePanel() {
         this.setForeground(new Color(0, 0, 0));
-        this.setBackground(new Color(255, 255, 255));
-        this.setBounds(0, 0, 964, 523);
+        this.setBackground(Color.LIGHT_GRAY);
+        this.setBounds(0, 0, 1184, 761);
         this.setLayout(null);
         this.setVisible(false);
 
         JLabel manu = new JLabel("Menu");
-        manu.setFont(new Font("Constantia", Font.BOLD, 40));
-        manu.setBounds(428, 10, 155, 66);
+        manu.setFont(new Font("Constantia", Font.BOLD, 50));
+        manu.setBounds(502, 10, 205, 114);
         this.add(manu);
 
-        JLabel lblNewLabel11 = new JLabel("Car Recommendation");
-        lblNewLabel11.setFont(new Font("Constantia", Font.BOLD, 12));
-        lblNewLabel11.setBounds(33, 219, 167, 15);
+        JLabel lblNewLabel11 = new JLabel("          차량 추천");
+        lblNewLabel11.setFont(new Font("HY헤드라인M", Font.BOLD, 15));
+        lblNewLabel11.setBounds(179, 358, 195, 30);
         this.add(lblNewLabel11);
 
-        JLabel lblSearchRealCars = new JLabel("Search real cars for sale");
-        lblSearchRealCars.setFont(new Font("Constantia", Font.BOLD, 12));
-        lblSearchRealCars.setBounds(555, 217, 167, 15);
+        JLabel lblSearchRealCars = new JLabel(" 차량 매물 검색");
+        lblSearchRealCars.setFont(new Font("HY헤드라인M", Font.BOLD, 15));
+        lblSearchRealCars.setBounds(840, 358, 188, 30);
         this.add(lblSearchRealCars);
 
-        JLabel lblCarPurchaseEstimate = new JLabel("Car purchase estimate");
-        lblCarPurchaseEstimate.setFont(new Font("Constantia", Font.BOLD, 12));
-        lblCarPurchaseEstimate.setBounds(33, 487, 167, 15);
+        JLabel lblCarPurchaseEstimate = new JLabel("     차량 구매 견적");
+        lblCarPurchaseEstimate.setFont(new Font("HY헤드라인M", Font.BOLD, 15));
+        lblCarPurchaseEstimate.setBounds(179, 731, 195, 30);
         this.add(lblCarPurchaseEstimate);
 
-        JLabel lblCarRepairEstimate = new JLabel("Car repair estimate");
-        lblCarRepairEstimate.setFont(new Font("Constantia", Font.BOLD, 12));
-        lblCarRepairEstimate.setBounds(555, 485, 167, 15);
+        JLabel lblCarRepairEstimate = new JLabel("차량 부품 수리 견적");
+        lblCarRepairEstimate.setFont(new Font("HY헤드라인M", Font.BOLD, 15));
+        lblCarRepairEstimate.setBounds(840, 719, 195, 30);
         this.add(lblCarRepairEstimate);
     }
-
 }

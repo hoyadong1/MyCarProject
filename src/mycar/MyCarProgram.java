@@ -12,7 +12,6 @@ import manager.ReviewManager;
 
 public class MyCarProgram {
 
-    static Manager<Review> reviewManager = new Manager<>();
     Scanner scan = new Scanner(System.in);
 
     public void run() {

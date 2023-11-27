@@ -24,6 +24,7 @@ public class ReviewListPanel extends JPanel {
         setLayout(new BorderLayout());
         //setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
     }
+    
 
     private JList<String> makeList(Option option) {
 
