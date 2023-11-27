@@ -2,18 +2,36 @@ package mycar;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import java.awt.Color;
 
 public class CarListPanel extends JPanel {
     private JTable carTable;
     String[] columnNames;
-    DefaultTableModel model; 
+    DefaultTableModel model;
+    JLabel front;
+    JLabel side;
+    JLabel back;
+    
+    public JTable getCarTable() {
+        return carTable;
+    }
+
+    public void setCarTable(JTable carTable) {
+        this.carTable = carTable;
+    }
+
     /**
      * 
      */
@@ -23,11 +41,12 @@ public class CarListPanel extends JPanel {
      * Create the panel.
      */
     public CarListPanel() {
-        this.setBounds(0, 0, 964, 523);
+        setBackground(Color.LIGHT_GRAY);
+        this.setBounds(0, 0, 1194, 761);
         this.setLayout(null);
         this.setVisible(false);
 
-        JLabel lblNewLabel = new JLabel("List of cars that match the specs");
+        JLabel lblNewLabel = new JLabel("입력한 스펙에 맞는 차량 리스트");
         lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 30));
         lblNewLabel.setBounds(12, 10, 498, 36);
         this.add(lblNewLabel);
@@ -36,6 +55,47 @@ public class CarListPanel extends JPanel {
                 "Car fuel", "Fuel efficiency", "Car power"};
         model = new DefaultTableModel(Start1.data, columnNames);
         carTable = new JTable(model);
+        
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.GRAY);
+        panel.setBounds(12, 523, 1170, 228);
+        add(panel);
+        panel.setLayout(null);
+        
+        front = new JLabel();
+        front.setBounds(12, 10, 310, 208);
+        panel.add(front);
+        
+        side = new JLabel();
+        side.setBounds(435, 10, 310, 208);
+        panel.add(side);
+        
+        back = new JLabel();
+        back.setBounds(848, 10, 310, 208);
+        panel.add(back);
+        
+        ListSelectionModel selectionModel = carTable.getSelectionModel();
+        selectionModel.addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    int selectedRow = carTable.getSelectedRow();
+
+                   
+                    if (selectedRow != -1) {
+                        
+                        Object value = carTable.getValueAt(selectedRow, 0);
+
+                       
+                        String selectedValue = String.valueOf(value);
+                        addImages("./images/"+selectedValue +"_front.jpg", "./images/"+selectedValue +"_side.jpg",
+                                "./images/"+selectedValue +"_back.jpg");                   
+
+                      
+                        System.out.println("./images/"+selectedValue +"_front.jpg");
+                    }
+                }
+            }
+        });
 
         TableColumnModel columnModel = carTable.getColumnModel();
         for (int i = 0; i < columnNames.length; i++) {
@@ -46,9 +106,17 @@ public class CarListPanel extends JPanel {
         carTable.setPreferredScrollableViewportSize(new Dimension(700, 600));
         carTable.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(carTable);
-        scrollPane.setSize(940, 446);
+        scrollPane.setSize(1170, 446);
         scrollPane.setLocation(12, 67);
         this.add(scrollPane);
     }
-
+    
+    public void addImages(String f, String s, String b) {
+        ImageIcon frontImage = new ImageIcon(f);
+        ImageIcon sideImage = new ImageIcon(s);
+        ImageIcon backImage = new ImageIcon(b);
+        front.setIcon(frontImage);
+        side.setIcon(sideImage);
+        back.setIcon(backImage);
+    }
 }

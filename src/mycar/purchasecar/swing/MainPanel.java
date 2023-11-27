@@ -8,7 +8,6 @@ import mycar.purchasecar.swing.carselect.CarSelectPanel;
 public class MainPanel extends JPanel {
 
     private static MainPanel instance = null;
-    private JPanel currentPanel;
     public CardLayout cardLayout;
 
     private void setting() {
