@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.List;
-import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -24,7 +23,6 @@ public class CarComparePanel extends JPanel {
     Car userMadeCar = null, basketCar = null;
     CarPanel userMadeCarPanel, basketCarPanel;
     private List<String> carList = User.getInstance().getKeyList();
-    Map<String, Car> userCarList = User.getInstance().getList();
 
     private void setting() {
         setLayout(null);
@@ -91,7 +89,7 @@ public class CarComparePanel extends JPanel {
 
         if (result == JOptionPane.OK_OPTION) {
             // 사용자가 OK 버튼을 눌렀을 때 선택된 항목 출력
-            String selectedOption = userCarList.get(list.getSelectedValue()).getCarName();
+            String selectedOption = list.getSelectedValue();
             if (selectedOption != null) {
                 basketCar = User.getInstance().findCar(selectedOption);
                 basketCarPanel.updateCar(basketCar);

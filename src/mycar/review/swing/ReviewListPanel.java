@@ -22,7 +22,7 @@ public class ReviewListPanel extends JPanel {
 
     private void setting() {
         setLayout(new BorderLayout());
-        //setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
     }
 
     private JList<String> makeList(Option option) {
@@ -39,7 +39,6 @@ public class ReviewListPanel extends JPanel {
 
         JList<String> tempJList;
         tempJList = new JList<>(listModel);
-        tempJList.setPreferredSize(new Dimension(400, 240));
         tempJList.setBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5));
         tempJList.setBackground(new Color(0x597081));
         tempJList.setCellRenderer(new CustomListCellRenderer());
@@ -60,7 +59,7 @@ public class ReviewListPanel extends JPanel {
             Border lineBorder = BorderFactory.createLineBorder(Color.BLACK);
             Border emptyBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
             setBorder(BorderFactory.createCompoundBorder(lineBorder, emptyBorder));
-            setPreferredSize(new Dimension(getPreferredSize().width, 60));
+            setPreferredSize(new Dimension(360, 60));
             if (isSelected) {
                 setBackground(new Color(0xa9cef4)); // 선택할 때의 배경색
                 setForeground(Color.WHITE); // 선택할 때의 전경색
@@ -99,6 +98,7 @@ public class ReviewListPanel extends JPanel {
         setBackground(new Color(227, 191, 191));
         JList<String> reviewList = makeList(option);
         JScrollPane reviewScrollList = new JScrollPane(reviewList);
+        reviewScrollList.setPreferredSize(new Dimension(400, 240));
         reviewScrollList.setPreferredSize(new Dimension(400, 240));
         reviewScrollList.getHorizontalScrollBar().setVisible(false);
         add(reviewScrollList);

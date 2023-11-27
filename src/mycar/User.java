@@ -29,12 +29,7 @@ public class User {
     }
 
     public Car findCar(String kwd) {
-        for (Car car : basket.values()) {
-            if (car.matches(kwd)) {
-                return car;
-            }
-        }
-        return null;
+        return basket.get(kwd);
     }
 
     public List<String> getKeyList() {
