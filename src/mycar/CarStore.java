@@ -7,10 +7,10 @@ import manager.Manageable;
 
 public class CarStore implements Manageable {
 
-    String name;
-    String location;
+    public String name;
+    public  String location;
 
-    HashMap<Car, Integer> carList = new HashMap<>();
+    public HashMap<Car, Integer> carList = new HashMap<>();
 
     @Override
     public void read(Scanner scan) {

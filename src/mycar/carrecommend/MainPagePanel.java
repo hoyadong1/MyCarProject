@@ -1,4 +1,4 @@
-package mycar;
+package mycar.carrecommend;
 
 import java.awt.Color;
 import java.awt.Font;

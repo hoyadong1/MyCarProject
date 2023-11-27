@@ -1,4 +1,4 @@
-package mycar;
+package mycar.carrecommend;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,23 +10,24 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
 public class RecommendPanel extends JPanel {
+
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 1L;
-    JTextField startPrice;
-    JTextField endPrice;
-    JTextField startYear;
-    JTextField endYear;
-    JTextField startPower;
-    JTextField endPower;
-    JTextField startFuelEffi;
-    JTextField endFuelEffi;
-    JLabel lblNewLabel_3;
-    JLabel lblNewLabel_4;
-    JLabel lblNewLabel_5;
-    JLabel lblNewLabel_1_4;
-    JList<String> list;
+    public JTextField startPrice;
+    public JTextField endPrice;
+    public JTextField startYear;
+    public JTextField endYear;
+    public JTextField startPower;
+    public JTextField endPower;
+    public JTextField startFuelEffi;
+    public JTextField endFuelEffi;
+    public JLabel lblNewLabel_3;
+    public JLabel lblNewLabel_4;
+    public JLabel lblNewLabel_5;
+    public JLabel lblNewLabel_1_4;
+    public JList<String> list;
 
     /**
      * Create the panel.
@@ -147,10 +148,12 @@ public class RecommendPanel extends JPanel {
         list = new JList<>();
         list.setFont(new Font("굴림", Font.BOLD, 60));
         list.setModel(new AbstractListModel() {
-            String[] values = new String[] {"가솔린", "", "LPG", "", "디젤", "", "전기", "", "하이브리드"};
+            String[] values = new String[]{"가솔린", "", "LPG", "", "디젤", "", "전기", "", "하이브리드"};
+
             public int getSize() {
                 return values.length;
             }
+
             public Object getElementAt(int index) {
                 return values[index];
             }

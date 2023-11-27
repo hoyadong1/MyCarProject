@@ -27,7 +27,7 @@ public class MainPanel extends JPanel {
         return instance;
     }
 
-    private MainPanel() {
+    public MainPanel() {
         setting();
     }
 

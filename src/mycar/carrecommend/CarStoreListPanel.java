@@ -1,4 +1,4 @@
-package mycar;
+package mycar.carrecommend;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -7,6 +7,7 @@ import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import mycar.MyCarProgram;
 
 public class CarStoreListPanel extends JPanel {
 private JTable carStoreTable;

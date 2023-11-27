@@ -1,11 +1,10 @@
 package mycar;
 
+import com.sun.tools.javac.Main;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionListener;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,13 +12,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import mycar.carrecommend.CarListPanel;
+import mycar.carrecommend.CarStoreListPanel;
+import mycar.carrecommend.LoginPanel;
+import mycar.carrecommend.MainPagePanel;
+import mycar.carrecommend.RecommendPanel;
+import mycar.carrecommend.SearchPanel;
+import mycar.purchasecar.swing.MainPanel;
 
 public class Start1 {
 
-    static Object[][] data;
+    public static Object[][] data;
     MyCarProgram mcp;
-    
+
     public static JFrame MyCarProgram;
 
     public static void main(String[] args) {
@@ -46,16 +51,18 @@ public class Start1 {
 
     private void initialize() {
         MyCarProgram = new JFrame();
-        MyCarProgram.setBounds(500, 250, 1200, 800);
+        MyCarProgram.setBounds(500, 250, 1300, 900);
         //MyCarProgram.setBounds(500, 250, 903, 384);
         MyCarProgram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MyCarProgram.getContentPane().setLayout(null);
+
+        MainPanel test = MainPanel.getInstance();
+        MyCarProgram.add(test);
 
         // ====================================================================================================================================
 
         CarListPanel CarList = new CarListPanel();
-        MyCarProgram.getContentPane().add(CarList);
-        
+        MyCarProgram.add(CarList);
+
         JButton returntoMain = new JButton("Return to Main menu");
         returntoMain.setFont(new Font("굴림", Font.PLAIN, 20));
         returntoMain.setBounds(723, 10, 229, 36);
@@ -64,13 +71,13 @@ public class Start1 {
 
 
         RecommendPanel recommendPanel = new RecommendPanel();
-        
+
         JButton recommendSubmit = new JButton("");
         recommendSubmit.setIcon(new ImageIcon("C:\\Users\\Lenovo\\eclipse-workspace\\MyCarProject\\images\\submit.jpg"));
         recommendSubmit.setFont(new Font("휴먼둥근헤드라인", Font.BOLD, 20));
         recommendSubmit.setBounds(851, 666, 176, 53);
         recommendPanel.add(recommendSubmit);
-        MyCarProgram.getContentPane().add(recommendPanel);
+        MyCarProgram.add(recommendPanel);
 
 
         // =========================================================================================================================
@@ -79,33 +86,36 @@ public class Start1 {
         LoginPanel login = new LoginPanel();
         login.setBackground(Color.LIGHT_GRAY);
         login.setBounds(0, 0, 1194, 761);
-        MyCarProgram.getContentPane().add(login);
+        MyCarProgram.add(login);
 
         JButton loginBt = new JButton("");
         loginBt.setIcon(new ImageIcon("C:\\Users\\Lenovo\\eclipse-workspace\\MyCarProject\\images\\제목 없음.jpg"));
         loginBt.setFont(new Font("Constantia", Font.BOLD, 15));
         loginBt.setBounds(255, 454, 176, 53);
         login.add(loginBt);
-        
+
         //==================================================================================================================================
 
 
         // //================================================================================================================================
 
         MainPagePanel mainPage = new MainPagePanel();
-        MyCarProgram.getContentPane().add(mainPage);
-        
+        MyCarProgram.add(mainPage);
+
         //===================================================================================================================================
-        
-        
+        MainPanel purchase = new MainPanel();
+        MyCarProgram.add(purchase);
+
+        //===================================================================================================================================
+
         CarStoreListPanel carStoreListPanel = new CarStoreListPanel(mcp, CarList, mainPage);
-        MyCarProgram.getContentPane().add(carStoreListPanel);
+        MyCarProgram.add(carStoreListPanel);
 
         SearchPanel searchCarPanel = new SearchPanel(mcp, carStoreListPanel);
-        MyCarProgram.getContentPane().add(searchCarPanel);
+        MyCarProgram.add(searchCarPanel);
 
         //===================================================================================================================================
-        
+
         JButton carRecommend = new JButton("carRecommend");
         carRecommend.setBounds(70, 130, 383, 218);
         mainPage.add(carRecommend);
@@ -131,7 +141,6 @@ public class Start1 {
                 String pw = "1234";
                 if (id.equals(login.idField.getText()) && pw.equals(login.passwordField.getText())) {
                     JOptionPane.showMessageDialog(null, "로그인에 성공했습니다.");
-                    MyCarProgram.setSize(1200, 800);
                     login.setVisible(false);
                     mainPage.setVisible(true);
                 } else {
@@ -149,7 +158,7 @@ public class Start1 {
             }
 
         });
-        
+
         carSearch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -184,6 +193,14 @@ public class Start1 {
                 mainPage.setVisible(true);
             }
         });
-        
+
+        purchaseEstimate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                purchase.setVisible(true);
+                mainPage.setVisible(false);
+                System.out.println("test");
+            }
+        });
     }
 }

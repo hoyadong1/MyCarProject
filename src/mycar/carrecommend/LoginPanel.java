@@ -1,4 +1,4 @@
-package mycar;
+package mycar.carrecommend;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,8 +10,8 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 public class LoginPanel extends JPanel {
-    JTextField idField;
-    JPasswordField passwordField;
+    public JTextField idField;
+    public JPasswordField passwordField;
 
    
     private static final long serialVersionUID = 1L;
