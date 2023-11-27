@@ -93,7 +93,8 @@ public class CarComparePanel extends JPanel {
             // 사용자가 OK 버튼을 눌렀을 때 선택된 항목 출력
             String selectedOption = userCarList.get(list.getSelectedValue()).getCarName();
             if (selectedOption != null) {
-                basketCar = User.getInstance().findCar(selectedOption);
+                basketCar = userCarList.get(list.getSelectedValue());
+                System.out.print(list.getSelectedValue());
                 basketCarPanel.updateCar(basketCar);
             }
         }

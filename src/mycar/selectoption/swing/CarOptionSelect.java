@@ -19,6 +19,7 @@ public class CarOptionSelect extends JPanel{
 	//JFrame frame;
 	JTextField totalCal;
 	int calNum = 0;
+	User saveOp;
 	public CarOptionSelect(Car car) {
 		//프레임 크기(실행용)
 		//frame = new JFrame("test");
@@ -27,7 +28,7 @@ public class CarOptionSelect extends JPanel{
 		setSize(1200, 800);
 		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Container contentPane = frame.getContentPane();
-		
+
 		//차 가격
 		if(car!=null)
 			calNum = car.getCarPrice();
@@ -99,11 +100,10 @@ public class CarOptionSelect extends JPanel{
 		optionJList.btnPanel.calBtn.addActionListener(calListener);
 		
 		//저장 버튼 ===============================================
-
 		ActionListener saveListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				User saveOp = User.getInstance();
+				saveOp = User.getInstance();
 				String answer = JOptionPane.showInputDialog("견적 이름을 입력해주세요.");
 				JOptionPane.showMessageDialog(null, answer+"가 저장되었습니다.", "저장 알림", JOptionPane.INFORMATION_MESSAGE);
 				saveOp.addBasket(answer, car);
