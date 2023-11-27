@@ -1,8 +1,9 @@
-package mycar;
+package manager;
 
-import java.util.*;
+import java.util.Scanner;
 
-interface Manageable {
+public interface Manageable {
+
     public void read(Scanner scan);
 
     public void print();
