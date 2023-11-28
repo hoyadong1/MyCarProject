@@ -92,13 +92,8 @@ public class Start1 {
         recommendSubmit.setFont(new Font("휴먼둥근헤드라인", Font.BOLD, 20));
         recommendSubmit.setBounds(851, 666, 176, 53);
         recommendPanel.add(recommendSubmit);
+        
         myCarProgram.getContentPane().add(recommendPanel,"recommendPanel");
-
-
-        // =========================================================================================================================
-
-
-        //==================================================================================================================================
 
 
         // //================================================================================================================================
@@ -119,7 +114,6 @@ public class Start1 {
         myCarProgram.getContentPane().add(searchCarPanel);
 
         //===================================================================================================================================
-
         JButton carRecommend = new JButton("carRecommend");
         carRecommend.setBounds(70, 130, 383, 218);
         mainPage.add(carRecommend);
@@ -138,64 +132,47 @@ public class Start1 {
 
         // =====================================================================================================================================
 
-        loginBt.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String id = "1234";
-                String pw = "1234";
-                if (id.equals(login.idField.getText()) && pw.equals(login.passwordField.getText())) {
-                    JOptionPane.showMessageDialog(null, "로그인에 성공했습니다.");
-                    login.setVisible(false);
-                    mainPage.setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "로그인에 실패했습니다.");
-                }
-
-            }
-
-        });
-        carRecommend.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPage.setVisible(false);
-                recommendPanel.setVisible(true);
-            }
-
-        });
-
-        carSearch.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPage.setVisible(false);
-                searchCarPanel.setVisible(true);
-            }
-        });
-
-        recommendSubmit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CarRange CR = new CarRange();
-                CR.read(Integer.parseInt(recommendPanel.startPrice.getText()),
-                        Integer.parseInt(recommendPanel.endPrice.getText()),
-                        Integer.parseInt(recommendPanel.startYear.getText()),
-                        Integer.parseInt(recommendPanel.endYear.getText()),
-                        Integer.parseInt(recommendPanel.startFuelEffi.getText()),
-                        Integer.parseInt(recommendPanel.endFuelEffi.getText()),
-                        Integer.parseInt(recommendPanel.startPower.getText()),
-                        Integer.parseInt(recommendPanel.endPower.getText()),
-                        recommendPanel.list.getSelectedIndices());
-                mcp.makeRecommendList(CR);
-                CarList.model.setDataVector(data, CarList.columnNames);
-                recommendPanel.setVisible(false);
-                CarList.setVisible(true);
-            }
-        });
-        returntoMain.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CarList.setVisible(false);
+        loginBt.addActionListener(e -> {
+            String id = "1234";
+            String pw = "1234";
+            if (id.equals(login.idField.getText()) && pw.equals(login.passwordField.getText())) {
+                JOptionPane.showMessageDialog(null, "로그인에 성공했습니다.");
+                login.setVisible(false);
                 mainPage.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "로그인에 실패했습니다.");
             }
+
+        });
+        carRecommend.addActionListener(e -> {
+            mainPage.setVisible(false);
+            recommendPanel.setVisible(true);
+        });
+
+        carSearch.addActionListener(e -> {
+            mainPage.setVisible(false);
+            searchCarPanel.setVisible(true);
+        });
+
+        recommendSubmit.addActionListener(e -> {
+            CarRange CR = new CarRange();
+            CR.read(Integer.parseInt(recommendPanel.startPrice.getText()),
+                    Integer.parseInt(recommendPanel.endPrice.getText()),
+                    Integer.parseInt(recommendPanel.startYear.getText()),
+                    Integer.parseInt(recommendPanel.endYear.getText()),
+                    Integer.parseInt(recommendPanel.startFuelEffi.getText()),
+                    Integer.parseInt(recommendPanel.endFuelEffi.getText()),
+                    Integer.parseInt(recommendPanel.startPower.getText()),
+                    Integer.parseInt(recommendPanel.endPower.getText()),
+                    recommendPanel.list.getSelectedIndices());
+            mcp.makeRecommendList(CR);
+            CarList.model.setDataVector(data, CarList.columnNames);
+            recommendPanel.setVisible(false);
+            CarList.setVisible(true);
+        });
+        returntoMain.addActionListener(e -> {
+            CarList.setVisible(false);
+            mainPage.setVisible(true);
         });
 
         purchaseEstimate.addActionListener(
