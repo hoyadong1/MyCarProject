@@ -28,9 +28,6 @@ public class MyCarProgram {
         });
         CarStoreManager.getInstance().readAll("CarStore.txt", scan -> new CarStore());
         RepairShopManager.getInstance().readAll("RepairShop.txt", scan -> new RepairShop());
-
-        OptionManager.getInstance().printAll();
-        //CarManager.getInstance().printAll();
     }
 
     private void Menu() {
@@ -42,20 +39,12 @@ public class MyCarProgram {
                 break;
             }
             switch (num) {
-                case 1:
-                    RecommendCar();
-                    break;
-                case 2:
-                    PurchaseCar();
-                    break;
-                case 3:
-                    SearchCar();
-                    break;
-                case 4:
-                    RepairCar();
-                    break;
-                default:
-                    break;
+                case 1 -> RecommendCar();
+                case 2 -> PurchaseCar();
+                case 3 -> SearchCar();
+                case 4 -> RepairCar();
+                default -> {
+                }
             }
         }
     }

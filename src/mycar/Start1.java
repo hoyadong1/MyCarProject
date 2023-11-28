@@ -92,7 +92,7 @@ public class Start1 {
         recommendSubmit.setFont(new Font("휴먼둥근헤드라인", Font.BOLD, 20));
         recommendSubmit.setBounds(851, 666, 176, 53);
         recommendPanel.add(recommendSubmit);
-        
+
         myCarProgram.getContentPane().add(recommendPanel,"recommendPanel");
 
 
