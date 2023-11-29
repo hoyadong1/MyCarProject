@@ -100,7 +100,7 @@ public class CarComparePanel extends JPanel {
     }
 
     private void back() {
-        MainPanel.getInstance().showPanel("panel2");
+        MainPanel.getInstance().showPanel("panel1");
     }
 
     private void next() {

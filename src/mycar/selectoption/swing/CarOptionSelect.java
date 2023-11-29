@@ -3,6 +3,8 @@ package mycar.selectoption.swing;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,6 +21,7 @@ public class CarOptionSelect extends JPanel{
 	//JFrame frame;
 	JTextField totalCal;
 	int calNum = 0;
+	ArrayList<Car> testList	= new ArrayList<>();
 	public CarOptionSelect(Car car) {
 		//프레임 크기(실행용)
 		//frame = new JFrame("test");
@@ -27,13 +30,14 @@ public class CarOptionSelect extends JPanel{
 		setSize(1200, 800);
 		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Container contentPane = frame.getContentPane();
-		
 		//차 가격
 		if(car!=null)
 			calNum = car.getCarPrice();
 		else
 			calNum = 0;
-		
+
+		Car test = new Car();
+		test.setName(car.getCarName());
 		//메인 페널 생성
 		setLayout(new BorderLayout());
 		
@@ -65,7 +69,7 @@ public class CarOptionSelect extends JPanel{
 				for(Option option : optionJList.optionList.mList) {
 					if((option.getName()).equals(data)) {
 						calNum += option.getPrice();
-						car.addOptionList(option);
+						test.addOptionList(option);
 					}
 						
 				}
@@ -82,8 +86,11 @@ public class CarOptionSelect extends JPanel{
 				optionJList.makeList.clearSelection();
 				//클릭 시 총합 가격 변동
 				for(Option option : optionJList.optionList.mList) {
-					if((option.getName()).equals(data))
+					if((option.getName()).equals(data)) {
 						calNum -= option.getPrice();
+						test.selectOptionRemove(option);
+					}
+						
 				}
 			}
 		};
@@ -103,10 +110,17 @@ public class CarOptionSelect extends JPanel{
 		ActionListener saveListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				User saveOp = User.getInstance();
 				String answer = JOptionPane.showInputDialog("견적 이름을 입력해주세요.");
-				JOptionPane.showMessageDialog(null, answer+"가 저장되었습니다.", "저장 알림", JOptionPane.INFORMATION_MESSAGE);
-				saveOp.addBasket(answer, car);
+				if(answer == null) {
+					JOptionPane.showMessageDialog(null, "이름을 입력해주세요.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, answer+"가 저장되었습니다.", "저장 알림", JOptionPane.INFORMATION_MESSAGE);
+					User.getInstance().addBasket(answer, test);
+					System.out.print(User.getInstance().getList());
+					testList.add(test);
+					System.out.print(testList);
+				}
 			}
 		};
 		optionJList.btnPanel.saveBtn.addActionListener(saveListener);
@@ -115,9 +129,10 @@ public class CarOptionSelect extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(car.getCarName());
-				CarComparePanel panel3 = new CarComparePanel(car, null);
+				CarComparePanel panel3 = new CarComparePanel(test, null);
 				MainPanel.getInstance().add(panel3, "panel3");
 				MainPanel.getInstance().showPanel("panel3");
+
 			}
 		};
 
@@ -130,8 +145,5 @@ public class CarOptionSelect extends JPanel{
 
 		//frame.setVisible(true);
 	}
-    public static void main(String[] args) {
-        new CarOptionSelect(null);
-    }
 
 }

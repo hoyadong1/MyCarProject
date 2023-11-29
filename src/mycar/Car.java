@@ -152,12 +152,29 @@ public class Car implements Manageable {
         return optionListName;
     }
 
+    public void setName(String name) {
+    	this.name = name;
+    }
+    
+    public ArrayList<Option> setOptionList(ArrayList<Option> optionlist){
+    	optionList = optionlist;
+    	return optionList;
+    }
+    
+    public ArrayList<Option> getOptionList(){
+    	return optionList;
+    }
+    
     public void addOptionList(Option o) {
         optionList.add(o);
     }
 
     public void removeOption() {
         optionList.clear();
+    }
+    
+    public void selectOptionRemove(Option o) {
+    	optionList.remove(o);
     }
 
     public String getCarName() {
