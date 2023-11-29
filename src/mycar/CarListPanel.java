@@ -2,6 +2,7 @@ package mycar;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,7 +19,10 @@ import java.awt.Color;
 public class CarListPanel extends JPanel {
     private JTable carTable;
     String[] columnNames;
-    DefaultTableModel model; 
+    DefaultTableModel model;
+    JLabel front;
+    JLabel side;
+    JLabel back;
     
     public JTable getCarTable() {
         return carTable;
@@ -58,17 +62,32 @@ public class CarListPanel extends JPanel {
         add(panel);
         panel.setLayout(null);
         
-        JPanel front = new JPanel();
-        front.setBounds(12, 10, 311, 208);
+        front = new JLabel();
+        front.setBounds(12, 10, 310, 208);
         panel.add(front);
         
-        JPanel side = new JPanel();
-        side.setBounds(422, 10, 311, 208);
+        side = new JLabel();
+        side.setBounds(435, 10, 310, 208);
         panel.add(side);
         
-        JPanel back = new JPanel();
-        back.setBounds(847, 10, 311, 208);
+        back = new JLabel();
+        back.setBounds(848, 10, 310, 208);
         panel.add(back);
+        
+        JLabel lblNewLabel_1 = new JLabel("전면사진");
+        lblNewLabel_1.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+        lblNewLabel_1.setBounds(334, 110, 57, 15);
+        panel.add(lblNewLabel_1);
+        
+        JLabel lblNewLabel_1_1 = new JLabel("측면사진");
+        lblNewLabel_1_1.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+        lblNewLabel_1_1.setBounds(757, 10, 57, 15);
+        panel.add(lblNewLabel_1_1);
+        
+        JLabel lblNewLabel_1_2 = new JLabel("후면사진");
+        lblNewLabel_1_2.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+        lblNewLabel_1_2.setBounds(779, 203, 57, 15);
+        panel.add(lblNewLabel_1_2);
         
         ListSelectionModel selectionModel = carTable.getSelectionModel();
         selectionModel.addListSelectionListener(new ListSelectionListener() {
@@ -76,22 +95,17 @@ public class CarListPanel extends JPanel {
                 if (!e.getValueIsAdjusting()) {
                     int selectedRow = carTable.getSelectedRow();
 
-                    // Ensure a row is selected
+                   
                     if (selectedRow != -1) {
-                        // Get the value of the first column in the selected row
+                        
                         Object value = carTable.getValueAt(selectedRow, 0);
 
-                        // Convert the value to a String
+                       
                         String selectedValue = String.valueOf(value);
-                        
-                        ImagePanel frontImage = new ImagePanel(new ImageIcon("./images/"+selectedValue +"_front.jpg").getImage());   
-                        frontImage.setSize(311, 208);    
-                        ImagePanel sideImage = new ImagePanel(new ImageIcon("./images/"+selectedValue +"_side.jpg").getImage());
-                        sideImage.setSize(311, 208);
-                        ImagePanel backImage = new ImagePanel(new ImageIcon("./images/"+selectedValue +"_back.jpg").getImage());
-                        backImage.setSize(311, 208);
+                        addImages("./images/"+selectedValue +"_front.jpg", "./images/"+selectedValue +"_side.jpg",
+                                "./images/"+selectedValue +"_back.jpg");                   
 
-                        // Print or use the selected value as needed
+                      
                         System.out.println("./images/"+selectedValue +"_front.jpg");
                     }
                 }
@@ -110,5 +124,14 @@ public class CarListPanel extends JPanel {
         scrollPane.setSize(1170, 446);
         scrollPane.setLocation(12, 67);
         this.add(scrollPane);
+    }
+    
+    public void addImages(String f, String s, String b) {
+        ImageIcon frontImage = new ImageIcon(f);
+        ImageIcon sideImage = new ImageIcon(s);
+        ImageIcon backImage = new ImageIcon(b);
+        front.setIcon(frontImage);
+        side.setIcon(sideImage);
+        back.setIcon(backImage);
     }
 }
