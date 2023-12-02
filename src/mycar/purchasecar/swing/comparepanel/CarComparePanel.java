@@ -1,8 +1,6 @@
 package mycar.purchasecar.swing.comparepanel;
 
 import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -13,20 +11,20 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 import mycar.Car;
+import mycar.Start1;
 import mycar.User;
 import mycar.purchasecar.swing.MainPanel;
+import mycar.ui.Palette;
 
 public class CarComparePanel extends JPanel {
 
-    GridBagConstraints gridBagConstraints = new GridBagConstraints();
-    GridBagLayout gridBagLayout = new GridBagLayout();
     Car userMadeCar = null, basketCar = null;
     CarPanel userMadeCarPanel, basketCarPanel;
     private List<String> carList = User.getInstance().getKeyList();
 
     private void setting() {
         setLayout(null);
-        this.setBackground(new Color(133, 160, 222, 103));
+        this.setBackground(Palette.background);
 
     }
 
@@ -122,7 +120,9 @@ public class CarComparePanel extends JPanel {
         makeGridBag(listButton, 633, 687, 237, 60);
         listButton.addActionListener(e -> showListPopup());
 
-        JButton nextButton = new JButton("next");
+        JButton nextButton = new JButton("종료");
+        nextButton.addActionListener(e -> Start1.showMain());
+
         makeGridBag(nextButton, 912, 687, 237, 60);
     }
 }

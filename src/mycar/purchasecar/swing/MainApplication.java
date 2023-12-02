@@ -4,6 +4,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import mycar.MyCarProgram;
+import mycar.ui.Palette;
 
 public class MainApplication {
 
@@ -21,7 +22,7 @@ public class MainApplication {
                 MainPanel test = MainPanel.getInstance();
                 frame.add(test);
 
-                frame.getContentPane().setBackground(Color.BLUE);
+                frame.getContentPane().setBackground(Palette.background);
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
             }

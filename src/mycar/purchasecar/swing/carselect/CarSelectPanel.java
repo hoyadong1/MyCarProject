@@ -19,20 +19,24 @@ import javax.swing.border.LineBorder;
 import manager.CarManager;
 import mycar.Car;
 import mycar.MyCarProgram;
+import mycar.Start1;
+import mycar.event.ButtonColorEvent;
 import mycar.purchasecar.swing.MainPanel;
 import mycar.selectoption.swing.CarOptionSelect;
 import mycar.swing.tools.JLabelFont;
 import mycar.swing.tools.LoadImage;
+import mycar.ui.Palette;
 
 public class CarSelectPanel extends JPanel {
 
     private Car selectCar = null;
+    JButton backButton;
     JLabel carName;
     ButtonClickListener buttonClickListener = new ButtonClickListener();
 
     private void setting() {
         setLayout(null);
-        setBackground(new Color(0xE8F1E8));
+        setBackground(Palette.background);
     }
 
 
@@ -54,8 +58,7 @@ public class CarSelectPanel extends JPanel {
         tempJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tempJList.setCellRenderer(new CustomListCellRenderer());
         tempJList.addListSelectionListener(e -> {
-            if (!e.getValueIsAdjusting()) { // 이벤트가 두 번 발생하는 것을 방지
-                // 선택된 아이템 가져오기
+            if (!e.getValueIsAdjusting()) {
                 String selectCarName = tempJList.getSelectedValue();
                 selectCar = MyCarProgram.findCar(selectCarName);
                 selectCar.removeOption();
@@ -79,10 +82,10 @@ public class CarSelectPanel extends JPanel {
             setBorder(BorderFactory.createCompoundBorder(lineBorder, emptyBorder));
             setPreferredSize(new Dimension(getPreferredSize().width, 30));
             if (isSelected) {
-                setBackground(new Color(0x55ABE3)); // 선택할 때의 배경색
-                setForeground(Color.WHITE); // 선택할 때의 전경색
+                setBackground(Palette.listSelect); // 선택할 때의 배경색
+                setForeground(Color.BLACK); // 선택할 때의 전경색
             } else {
-                setBackground(new Color(0xDAE6EE));
+                setBackground(Palette.listNotSelect);
             }
             return this;
         }
@@ -93,7 +96,7 @@ public class CarSelectPanel extends JPanel {
         private void setting() {
             setLayout(null);
             setPreferredSize(new Dimension(540, 400));
-            setBackground(new Color(0x5F738A));
+            setBackground(Palette.firstPanel);
             setBorder(new LineBorder(Color.black, 2));
         }
 
@@ -137,15 +140,20 @@ public class CarSelectPanel extends JPanel {
         carInfo.setLocation(600, 140);
         add(carInfo);
 
-        JButton backButton = new JButton("back");
+        backButton = new JButton("back");
         backButton.setSize(179, 62);
         backButton.setLocation(647, 598);
+        backButton.addActionListener(e -> Start1.showMain());
         add(backButton);
 
         JButton frontButton = new JButton("next");
         frontButton.setSize(179, 62);
         frontButton.setLocation(909, 598);
+        frontButton.setOpaque(true); // 투명도 설정
+        frontButton.setBackground(Palette.button);
+
         frontButton.addActionListener(buttonClickListener);
+        frontButton.addMouseListener(new ButtonColorEvent(frontButton));
         add(frontButton);
     }
 }

@@ -21,7 +21,7 @@ public class LoginPanel extends JPanel {
         ImagePanel loginImage = new ImagePanel(new ImageIcon("./images/Login.jpg").getImage());
         loginImage.setBorder(new LineBorder(Color.DARK_GRAY, 5));
 
-        this.setBackground(Color.LIGHT_GRAY);
+        this.setBackground(new Color(0xC4FFF9));
         this.setBounds(0, 0, 1143, 714);
         this.setLayout(null);
         loginImage.setBounds(521, 152, 551, 443);

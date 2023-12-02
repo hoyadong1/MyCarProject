@@ -1,32 +1,28 @@
 package mycar;
 
-import com.sun.tools.javac.Main;
 import java.awt.CardLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.ImageIcon;
-import javax.swing.MutableComboBoxModel;
-import mycar.carrecommend.CarListPanel;
+
 import mycar.carrecommend.CarStoreListPanel;
 import mycar.carrecommend.LoginPanel;
 import mycar.carrecommend.MainPagePanel;
 import mycar.carrecommend.RecommendPanel;
 import mycar.carrecommend.SearchPanel;
+import mycar.ui.Palette;
 import mycar.purchasecar.swing.MainPanel;
-
+import mycar.carrecommend.*;
 public class Start1 {
 
     public static Object[][] data;
     MyCarProgram mcp;
-
+    static CardLayout cardLayout;
     public static JFrame myCarProgram;
 
     public static void main(String[] args) {
@@ -56,7 +52,7 @@ public class Start1 {
         myCarProgram.setBounds(500, 250, 1200, 800);
         //MyCarProgram.setBounds(500, 250, 903, 384);
         myCarProgram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        CardLayout cardLayout = new CardLayout();
+        cardLayout = new CardLayout();
         myCarProgram.getContentPane().setLayout(cardLayout);
 
 
@@ -99,7 +95,7 @@ public class Start1 {
         // //================================================================================================================================
 
         MainPagePanel mainPage = new MainPagePanel();
-        myCarProgram.getContentPane().add(mainPage);
+        myCarProgram.getContentPane().add(mainPage,"main");
 
         //===================================================================================================================================
         MainPanel purchase = MainPanel.getInstance();
@@ -115,6 +111,7 @@ public class Start1 {
 
         //===================================================================================================================================
         JButton carRecommend = new JButton("carRecommend");
+        carRecommend.setBackground(Palette.background);
         carRecommend.setBounds(70, 130, 383, 218);
         mainPage.add(carRecommend);
 
@@ -177,5 +174,9 @@ public class Start1 {
 
         purchaseEstimate.addActionListener(
             e -> cardLayout.show(myCarProgram.getContentPane(),"purchase"));
+    }
+
+    public static void showMain() {
+        cardLayout.show(myCarProgram.getContentPane(),"main");
     }
 }

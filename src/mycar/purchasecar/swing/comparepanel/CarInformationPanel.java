@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import mycar.Car;
 import mycar.swing.tools.LoadImage;
+import mycar.ui.Palette;
 
 public class CarInformationPanel extends JPanel {
 
@@ -19,6 +20,7 @@ public class CarInformationPanel extends JPanel {
         setPreferredSize(new Dimension(516, 258));
         setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         setBorder(new LineBorder(Color.black, 2));
+        setBackground(Palette.firstPanel);
 
     }
 

@@ -1,4 +1,4 @@
-package mycar;
+package mycar.carrecommend;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -14,11 +14,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import java.awt.Color;
+import mycar.Start1;
+import mycar.carrecommend.ImagePanel;
 
 public class CarListPanel extends JPanel {
     private JTable carTable;
-    String[] columnNames;
-    DefaultTableModel model;
+    public String[] columnNames;
+    public DefaultTableModel model;
     
     public JTable getCarTable() {
         return carTable;
