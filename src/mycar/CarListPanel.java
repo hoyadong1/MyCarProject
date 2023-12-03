@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class CarListPanel extends JPanel {
     private JTable carTable;
@@ -41,36 +42,40 @@ public class CarListPanel extends JPanel {
      * Create the panel.
      */
     public CarListPanel() {
-        setBackground(Color.LIGHT_GRAY);
+        setBackground(Color.decode("#07BEB8"));
         this.setBounds(0, 0, 1194, 761);
         this.setLayout(null);
         this.setVisible(false);
 
         JLabel lblNewLabel = new JLabel("입력한 스펙에 맞는 차량 리스트");
+        lblNewLabel.setBorder(new LineBorder(Color.DARK_GRAY, 1));
         lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 30));
-        lblNewLabel.setBounds(12, 10, 498, 36);
+        lblNewLabel.setBounds(12, 10, 437, 36);
         this.add(lblNewLabel);
 
         columnNames = new String[] {"Car code", "Car name", "Car price", "Car year",
                 "Car fuel", "Fuel efficiency", "Car power"};
         model = new DefaultTableModel(Start1.data, columnNames);
         carTable = new JTable(model);
-        
+        carTable.setBackground(Color.decode("#9CEAEF"));
         JPanel panel = new JPanel();
-        panel.setBackground(Color.GRAY);
+        panel.setBackground(Color.decode("#3DCCC7"));
         panel.setBounds(12, 523, 1170, 228);
         add(panel);
         panel.setLayout(null);
         
         front = new JLabel();
+        front.setBorder(new LineBorder(Color.DARK_GRAY, 1));
         front.setBounds(12, 10, 310, 208);
         panel.add(front);
         
         side = new JLabel();
+        side.setBorder(new LineBorder(Color.DARK_GRAY, 1));
         side.setBounds(435, 10, 310, 208);
         panel.add(side);
         
         back = new JLabel();
+        back.setBorder(new LineBorder(Color.DARK_GRAY, 1));
         back.setBounds(848, 10, 310, 208);
         panel.add(back);
         
@@ -117,10 +122,11 @@ public class CarListPanel extends JPanel {
             TableColumn column = columnModel.getColumn(i);
             column.setHeaderValue(columnNames[i]);
         }
-        carTable.setFont(new Font("굴림", Font.BOLD, 13));
+        carTable.setFont(new Font("굴림", Font.BOLD, 15));
         carTable.setPreferredScrollableViewportSize(new Dimension(700, 600));
         carTable.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(carTable);
+        scrollPane.setFont(new Font("굴림", Font.BOLD, 10));
         scrollPane.setSize(1170, 446);
         scrollPane.setLocation(12, 67);
         this.add(scrollPane);

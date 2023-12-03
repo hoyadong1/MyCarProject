@@ -80,14 +80,14 @@ public class Start1 {
 
 
         LoginPanel login = new LoginPanel();
-        login.setBackground(Color.LIGHT_GRAY);
+        login.setBackground(Color.decode("#07BEB8"));
         login.setBounds(0, 0, 1194, 761);
         myCarProgram.getContentPane().add(login);
 
         JButton loginBt = new JButton("");
         loginBt.setIcon(new ImageIcon("./images/loginbt.jpg"));
         loginBt.setFont(new Font("Constantia", Font.BOLD, 15));
-        loginBt.setBounds(255, 454, 176, 53);
+        loginBt.setBounds(404, 456, 176, 53);
         login.add(loginBt);
         
         //==================================================================================================================================
@@ -119,7 +119,7 @@ public class Start1 {
 
         JButton purchaseEstimate = new JButton("purchaseEstimate");
         purchaseEstimate.setIcon(new ImageIcon("./images/carPurchase.jpg"));
-        purchaseEstimate.setBounds(70, 500, 383, 218);
+        purchaseEstimate.setBounds(70, 450, 383, 218);
         mainPage.add(purchaseEstimate);
 
         JButton carSearch = new JButton("carSearch");
@@ -127,7 +127,7 @@ public class Start1 {
         mainPage.add(carSearch);
 
         JButton repairEstimate = new JButton("repairEstimate");
-        repairEstimate.setBounds(710, 500, 383, 218);
+        repairEstimate.setBounds(710, 450, 383, 218);
         mainPage.add(repairEstimate);
 
         // =====================================================================================================================================
