@@ -14,6 +14,7 @@ import mycar.Option;
 import mycar.User;
 import mycar.purchasecar.swing.MainPanel;
 import mycar.purchasecar.swing.comparepanel.CarComparePanel;
+import mycar.ui.Palette;
 
 public class CarOptionSelect extends JPanel{
 	//JFrame frame;
@@ -27,7 +28,8 @@ public class CarOptionSelect extends JPanel{
 		setSize(1200, 800);
 		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Container contentPane = frame.getContentPane();
-		
+		Palette pal = new Palette();
+		setBackground(pal.background);
 		//차 가격
 		if(car!=null)
 			calNum = car.getCarPrice();

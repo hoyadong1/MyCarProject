@@ -9,11 +9,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import mycar.Option;
 import mycar.swing.tools.JLabelFont;
+import mycar.ui.Palette;
 
 public class OptionDataPanel extends JPanel {
 
     private void settingPanel() {
-        setBackground(new Color(0x7ea0b7));
+        setBackground(Palette.firstPanel);
         setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
     }
 
@@ -27,7 +28,7 @@ public class OptionDataPanel extends JPanel {
             JLabelFont.setFont(optionNameLabel, 30);
             optionNameLabel.setOpaque(true);
             optionNameLabel.setBorder(BorderFactory.createEmptyBorder(10, 5, 5, 5));
-            optionNameLabel.setBackground(new Color(0x7ea0b7));
+            optionNameLabel.setBackground(Palette.firstPanel);
             add(optionNameLabel);
         }
     }
@@ -43,7 +44,7 @@ public class OptionDataPanel extends JPanel {
             JLabelFont.setFont(optionInformationLabel, 20);
             optionInformationLabel.setOpaque(true);
             optionInformationLabel.setBorder(BorderFactory.createEmptyBorder(10, 5, 5, 5));
-            optionInformationLabel.setBackground(new Color(0x7ea0b7));
+            optionInformationLabel.setBackground(Palette.firstPanel);
             add(optionInformationLabel);
         }
     }
@@ -55,7 +56,7 @@ public class OptionDataPanel extends JPanel {
         JPanel optionName = new OptionName(option.getName());
         optionName.setPreferredSize(new Dimension(400, 60));
         // TODO: 정보를 추가하게된다면 아래 부분 실제 옵션의 정보를 받아오도록 수정
-        JPanel optionInformation = new OptionInformation("임시 데이터 정보");
+        JPanel optionInformation = new OptionInformation("");
         optionInformation.setPreferredSize(new Dimension(400, 90));
 
         add(optionName);

@@ -17,6 +17,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import mycar.Option;
 import mycar.Review;
+import mycar.ui.Palette;
 
 public class ReviewListPanel extends JPanel {
 
@@ -42,7 +43,7 @@ public class ReviewListPanel extends JPanel {
         tempJList = new JList<>(listModel);
         tempJList.setPreferredSize(new Dimension(400, 240));
         tempJList.setBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5));
-        tempJList.setBackground(new Color(0x597081));
+        tempJList.setBackground(Palette.secondPanel);
         tempJList.setCellRenderer(new CustomListCellRenderer());
         tempJList.addMouseListener(new MyMouseListener(tempJList));
         tempJList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
@@ -63,10 +64,10 @@ public class ReviewListPanel extends JPanel {
             setBorder(BorderFactory.createCompoundBorder(lineBorder, emptyBorder));
             setPreferredSize(new Dimension(getPreferredSize().width, 60));
             if (isSelected) {
-                setBackground(new Color(0xa9cef4)); // 선택할 때의 배경색
+                setBackground(Palette.listSelect); // 선택할 때의 배경색
                 setForeground(Color.WHITE); // 선택할 때의 전경색
             } else {
-                setBackground(new Color(0x7ea0b7));
+                setBackground(Palette.listNotSelect);
             }
             return this;
         }
@@ -97,7 +98,7 @@ public class ReviewListPanel extends JPanel {
 
     public ReviewListPanel(Option option) {
         setting();
-        setBackground(new Color(227, 191, 191));
+        setBackground(Palette.secondPanel);
         JList<String> reviewList = makeList(option);
         JScrollPane reviewScrollList = new JScrollPane(reviewList);
         reviewScrollList.setPreferredSize(new Dimension(400, 240));
