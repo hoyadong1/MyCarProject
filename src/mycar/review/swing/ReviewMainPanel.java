@@ -4,11 +4,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import mycar.Option;
 import mycar.swing.tools.LoadImage;
+import mycar.ui.Palette;
 
 public class ReviewMainPanel extends JPanel {
 
@@ -17,7 +20,7 @@ public class ReviewMainPanel extends JPanel {
     GridBagLayout gridBagLayout = new GridBagLayout();
 
     private void setting() {
-        setBackground(new Color(0xa9cef4));
+        setBackground(Palette.background);
         setLayout(gridBagLayout);
         setBorder(new LineBorder(Color.BLACK, 2));
         gridBagConstraints.fill = GridBagConstraints.BOTH;
@@ -37,11 +40,17 @@ public class ReviewMainPanel extends JPanel {
         gridBagLayout.setConstraints(c, gridBagConstraints);
 
     }
-
+    private static String removeParenthesesContent(String input) {
+        // 정규식 패턴: 괄호로 둘러싸인 내용 제거
+        Pattern pattern = Pattern.compile("\\([^)]*\\)");
+        Matcher matcher = pattern.matcher(input);
+        return matcher.replaceAll("").trim();
+    }
     public ReviewMainPanel(Option option) {
         //TODO 옵션 받는거 수정;
         setting();
-        JPanel optionImgPanel = new LoadImage("../../../images/none.png", 400, 400);
+        String optionName = removeParenthesesContent(option.getName());
+        JPanel optionImgPanel = new LoadImage("../../../images/"+optionName+".jpg", 400, 400);
 
         //JPanel optionImgPanel = new OptionImgPanel("none.png", 400, 400);
         optionImgPanel.setPreferredSize(new Dimension(400, 400));
