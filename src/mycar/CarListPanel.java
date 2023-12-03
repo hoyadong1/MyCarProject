@@ -15,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import java.awt.Color;
+import javax.swing.border.LineBorder;
+import mycar.ui.Palette;
 
 public class CarListPanel extends JPanel {
     private JTable carTable;
@@ -41,38 +43,58 @@ public class CarListPanel extends JPanel {
      * Create the panel.
      */
     public CarListPanel() {
-        setBackground(Color.LIGHT_GRAY);
+        setBackground(Palette.background);
         this.setBounds(0, 0, 1194, 761);
         this.setLayout(null);
         this.setVisible(false);
 
         JLabel lblNewLabel = new JLabel("입력한 스펙에 맞는 차량 리스트");
+        lblNewLabel.setBorder(new LineBorder(Color.DARK_GRAY, 1));
         lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 30));
-        lblNewLabel.setBounds(12, 10, 498, 36);
+        lblNewLabel.setBounds(12, 10, 437, 36);
+        lblNewLabel.setBackground(Palette.firstPanel);
         this.add(lblNewLabel);
 
         columnNames = new String[] {"Car code", "Car name", "Car price", "Car year",
                 "Car fuel", "Fuel efficiency", "Car power"};
         model = new DefaultTableModel(Start1.data, columnNames);
         carTable = new JTable(model);
-        
+        carTable.setBackground(Palette.listNotSelect);
         JPanel panel = new JPanel();
-        panel.setBackground(Color.GRAY);
+        panel.setBackground(Palette.firstPanel);
         panel.setBounds(12, 523, 1170, 228);
         add(panel);
         panel.setLayout(null);
         
         front = new JLabel();
+        front.setBorder(new LineBorder(Color.DARK_GRAY, 1));
         front.setBounds(12, 10, 310, 208);
         panel.add(front);
         
         side = new JLabel();
+        side.setBorder(new LineBorder(Color.DARK_GRAY, 1));
         side.setBounds(435, 10, 310, 208);
         panel.add(side);
         
         back = new JLabel();
+        back.setBorder(new LineBorder(Color.DARK_GRAY, 1));
         back.setBounds(848, 10, 310, 208);
         panel.add(back);
+        
+        JLabel lblNewLabel_1 = new JLabel("전면사진");
+        lblNewLabel_1.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+        lblNewLabel_1.setBounds(334, 110, 57, 15);
+        panel.add(lblNewLabel_1);
+        
+        JLabel lblNewLabel_1_1 = new JLabel("측면사진");
+        lblNewLabel_1_1.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+        lblNewLabel_1_1.setBounds(757, 10, 57, 15);
+        panel.add(lblNewLabel_1_1);
+        
+        JLabel lblNewLabel_1_2 = new JLabel("후면사진");
+        lblNewLabel_1_2.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+        lblNewLabel_1_2.setBounds(779, 203, 57, 15);
+        panel.add(lblNewLabel_1_2);
         
         ListSelectionModel selectionModel = carTable.getSelectionModel();
         selectionModel.addListSelectionListener(new ListSelectionListener() {
@@ -102,10 +124,11 @@ public class CarListPanel extends JPanel {
             TableColumn column = columnModel.getColumn(i);
             column.setHeaderValue(columnNames[i]);
         }
-        carTable.setFont(new Font("굴림", Font.BOLD, 13));
+        carTable.setFont(new Font("굴림", Font.BOLD, 15));
         carTable.setPreferredScrollableViewportSize(new Dimension(700, 600));
         carTable.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(carTable);
+        scrollPane.setFont(new Font("굴림", Font.BOLD, 10));
         scrollPane.setSize(1170, 446);
         scrollPane.setLocation(12, 67);
         this.add(scrollPane);

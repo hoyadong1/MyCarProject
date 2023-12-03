@@ -5,6 +5,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import mycar.ui.Palette;
 
 public class MainPagePanel extends JPanel {
 
@@ -18,7 +19,7 @@ public class MainPagePanel extends JPanel {
      */
     public MainPagePanel() {
         this.setForeground(new Color(0, 0, 0));
-        this.setBackground(Color.LIGHT_GRAY);
+        this.setBackground(Palette.background);
         this.setBounds(0, 0, 1184, 761);
         this.setLayout(null);
         this.setVisible(false);
@@ -40,12 +41,12 @@ public class MainPagePanel extends JPanel {
 
         JLabel lblCarPurchaseEstimate = new JLabel("     차량 구매 견적");
         lblCarPurchaseEstimate.setFont(new Font("HY헤드라인M", Font.BOLD, 15));
-        lblCarPurchaseEstimate.setBounds(179, 731, 195, 30);
+        lblCarPurchaseEstimate.setBounds(179, 680, 139, 30);
         this.add(lblCarPurchaseEstimate);
 
         JLabel lblCarRepairEstimate = new JLabel("차량 부품 수리 견적");
         lblCarRepairEstimate.setFont(new Font("HY헤드라인M", Font.BOLD, 15));
-        lblCarRepairEstimate.setBounds(840, 719, 195, 30);
+        lblCarRepairEstimate.setBounds(840, 680, 145, 30);
         this.add(lblCarRepairEstimate);
     }
 }

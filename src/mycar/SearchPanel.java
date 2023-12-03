@@ -1,9 +1,7 @@
 package mycar;
 
 import javax.swing.*;
-
 import manager.CarStoreManager;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -72,5 +70,4 @@ public class SearchPanel extends JPanel {
             }
         });
     }
-    
 }
