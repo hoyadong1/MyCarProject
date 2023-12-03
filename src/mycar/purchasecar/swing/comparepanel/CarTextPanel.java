@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import mycar.Car;
 import mycar.swing.tools.JLabelFont;
+import mycar.ui.Palette;
 
 public class CarTextPanel extends JPanel {
 
@@ -31,7 +32,7 @@ public class CarTextPanel extends JPanel {
         JLabel tempLabel = new JLabel(string);
         JLabelFont.setFont(tempLabel, fontSize);
         setOpaque(true);
-        setBackground(new Color(0x7ea0b7));
+        setBackground(Palette.secondPanel);
         setBorder(BorderFactory.createEmptyBorder(5, 10, 0, 5));
 
         return tempLabel;

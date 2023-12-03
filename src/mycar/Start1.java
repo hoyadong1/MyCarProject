@@ -22,7 +22,7 @@ public class Start1 {
 
     static Object[][] data;
     MyCarProgram mcp;
-    
+    static CardLayout cardLayout;
     public static JFrame myCarProgram;
 
     public static void main(String[] args) {
@@ -52,8 +52,8 @@ public class Start1 {
         myCarProgram.setBounds(500, 250, 1200, 800);
         //MyCarProgram.setBounds(500, 250, 903, 384);
         myCarProgram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        CardLayout cardLayout = new CardLayout();
-        myCarProgram.getContentPane().setLayout(null);
+        cardLayout = new CardLayout();
+        myCarProgram.getContentPane().setLayout(cardLayout);
 
         // ====================================================================================================================================
 
@@ -74,7 +74,7 @@ public class Start1 {
         recommendSubmit.setFont(new Font("휴먼둥근헤드라인", Font.BOLD, 20));
         recommendSubmit.setBounds(851, 666, 176, 53);
         recommendPanel.add(recommendSubmit);
-        myCarProgram.getContentPane().add(recommendPanel);
+        myCarProgram.getContentPane().add(recommendPanel,"recommendPanel");
 
 
         // =========================================================================================================================
@@ -83,7 +83,8 @@ public class Start1 {
         LoginPanel login = new LoginPanel();
         login.setBackground(Palette.background);
         login.setBounds(0, 0, 1194, 761);
-        myCarProgram.getContentPane().add(login);
+        myCarProgram.getContentPane().add(login,"login");
+        cardLayout.show(myCarProgram.getContentPane(),"login");
 
         JButton loginBt = new JButton("");
         loginBt.setIcon(new ImageIcon("./images/loginbt.jpg"));
@@ -100,16 +101,16 @@ public class Start1 {
         // //================================================================================================================================
 
         MainPagePanel mainPage = new MainPagePanel();
-        myCarProgram.getContentPane().add(mainPage);
+        myCarProgram.getContentPane().add(mainPage,"main");
         
         //===================================================================================================================================
         
         
         CarStoreListPanel carStoreListPanel = new CarStoreListPanel(mcp, CarList, mainPage);
-        myCarProgram.getContentPane().add(carStoreListPanel);
+        myCarProgram.getContentPane().add(carStoreListPanel,"carStoreListPanel");
 
         SearchPanel searchCarPanel = new SearchPanel(mcp, carStoreListPanel);
-        myCarProgram.getContentPane().add(searchCarPanel);
+        myCarProgram.getContentPane().add(searchCarPanel,"searchCarPanel");
 
         //===================================================================================================================================
         
@@ -133,78 +134,50 @@ public class Start1 {
 
         // =====================================================================================================================================
 
-        loginBt.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String id = "1234";
-                String pw = "1234";
-                if (id.equals(login.idField.getText()) && pw.equals(login.passwordField.getText())) {
-                    JOptionPane.showMessageDialog(null, "로그인에 성공했습니다.");
-                    myCarProgram.setSize(1200, 800);
-                    login.setVisible(false);
-                    mainPage.setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "로그인에 실패했습니다.");
-                }
-
+        loginBt.addActionListener(e -> {
+            String id = "1234";
+            String pw = "1234";
+            if (id.equals(login.idField.getText()) && pw.equals(login.passwordField.getText())) {
+                JOptionPane.showMessageDialog(null, "로그인에 성공했습니다.");
+                myCarProgram.setSize(1200, 800);
+                cardLayout.show(myCarProgram.getContentPane(),"main");
+            } else {
+                JOptionPane.showMessageDialog(null, "로그인에 실패했습니다.");
             }
 
         });
-        carRecommend.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPage.setVisible(false);
-                recommendPanel.setVisible(true);
-            }
-
+        carRecommend.addActionListener(e -> {
+            cardLayout.show(myCarProgram.getContentPane(),"recommendPanel");
         });
         
-        carSearch.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPage.setVisible(false);
-                searchCarPanel.setVisible(true);
-            }
+        carSearch.addActionListener(e -> {
+            cardLayout.show(myCarProgram.getContentPane(),"searchCarPanel");
         });
         
-        purchaseEstimate.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPage.setVisible(false);
-                myCarProgram.getContentPane().setLayout(cardLayout);
-                cardLayout.show(myCarProgram.getContentPane(),"purchase");
-                purchase.setVisible(true);
-            }
-
+        purchaseEstimate.addActionListener(e -> {
+            cardLayout.show(myCarProgram.getContentPane(),"purchase");
         });
 
-        recommendSubmit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CarRange CR = new CarRange();
-                CR.read(Integer.parseInt(recommendPanel.startPrice.getText()),
-                        Integer.parseInt(recommendPanel.endPrice.getText()),
-                        Integer.parseInt(recommendPanel.startYear.getText()),
-                        Integer.parseInt(recommendPanel.endYear.getText()),
-                        Integer.parseInt(recommendPanel.startFuelEffi.getText()),
-                        Integer.parseInt(recommendPanel.endFuelEffi.getText()),
-                        Integer.parseInt(recommendPanel.startPower.getText()),
-                        Integer.parseInt(recommendPanel.endPower.getText()),
-                        recommendPanel.list.getSelectedIndices());
-                mcp.makeRecommendList(CR);
-                CarList.model.setDataVector(data, CarList.columnNames);
-                recommendPanel.setVisible(false);
-                CarList.setVisible(true);
-            }
+        recommendSubmit.addActionListener(e -> {
+            CarRange CR = new CarRange();
+            CR.read(Integer.parseInt(recommendPanel.startPrice.getText()),
+                    Integer.parseInt(recommendPanel.endPrice.getText()),
+                    Integer.parseInt(recommendPanel.startYear.getText()),
+                    Integer.parseInt(recommendPanel.endYear.getText()),
+                    Integer.parseInt(recommendPanel.startFuelEffi.getText()),
+                    Integer.parseInt(recommendPanel.endFuelEffi.getText()),
+                    Integer.parseInt(recommendPanel.startPower.getText()),
+                    Integer.parseInt(recommendPanel.endPower.getText()),
+                    recommendPanel.list.getSelectedIndices());
+            mcp.makeRecommendList(CR);
+            CarList.model.setDataVector(data, CarList.columnNames);
+            recommendPanel.setVisible(false);
+            CarList.setVisible(true);
         });
-        returntoMain.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CarList.setVisible(false);
-                mainPage.setVisible(true);
-            }
-        });
-        
+        returntoMain.addActionListener(e -> cardLayout.show(myCarProgram.getContentPane(),"main"));
+
+    }
+    public static void showMain() {
+        cardLayout.show(myCarProgram.getContentPane(),"main");
     }
 }
-

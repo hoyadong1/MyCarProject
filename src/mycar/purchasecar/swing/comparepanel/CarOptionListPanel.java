@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import mycar.Car;
+import mycar.ui.Palette;
 
 public class CarOptionListPanel extends JPanel {
 
@@ -18,7 +19,7 @@ public class CarOptionListPanel extends JPanel {
 
     private void setting() {
         setLayout(null);
-        setBackground(new Color(88, 88, 241));
+        setBackground(Palette.firstPanel);
         setPreferredSize(new Dimension(474, 282));
         setBorder(new LineBorder(Color.black, 2));
     }
@@ -62,10 +63,10 @@ public class CarOptionListPanel extends JPanel {
             setBorder(BorderFactory.createCompoundBorder(lineBorder, emptyBorder));
             setPreferredSize(new Dimension(getPreferredSize().width, 30));
             if (isSelected) {
-                setBackground(new Color(0xa9cef4)); // 선택할 때의 배경색
+                setBackground(Palette.listSelect); // 선택할 때의 배경색
                 setForeground(Color.WHITE); // 선택할 때의 전경색
             } else {
-                setBackground(new Color(0x7ea0b7));
+                setBackground(Palette.listNotSelect);
             }
             return this;
         }
