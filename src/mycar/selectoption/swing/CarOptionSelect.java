@@ -22,6 +22,12 @@ public class CarOptionSelect extends JPanel{
 	JTextField totalCal;
 	int calNum = 0;
 	ArrayList<Car> testList	= new ArrayList<>();
+	Car test;
+	Car init(Car car) {
+		Car test2 = new Car();
+		test2.setName(car.getCarName());
+		return test2;
+	}
 	public CarOptionSelect(Car car) {
 		//프레임 크기(실행용)
 		//frame = new JFrame("test");
@@ -35,9 +41,7 @@ public class CarOptionSelect extends JPanel{
 			calNum = car.getCarPrice();
 		else
 			calNum = 0;
-
-		Car test = new Car();
-		test.setName(car.getCarName());
+		test = init(car);
 		//메인 페널 생성
 		setLayout(new BorderLayout());
 		
@@ -110,13 +114,16 @@ public class CarOptionSelect extends JPanel{
 		ActionListener saveListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				CarControl.getInstance();
+				CarControl.setCarName(car);
+				CarControl.setCarOption(car);
 				String answer = JOptionPane.showInputDialog("견적 이름을 입력해주세요.");
 				if(answer == null) {
 					JOptionPane.showMessageDialog(null, "이름을 입력해주세요.", "알림", JOptionPane.INFORMATION_MESSAGE);
 				}
 				else {
 					JOptionPane.showMessageDialog(null, answer+"가 저장되었습니다.", "저장 알림", JOptionPane.INFORMATION_MESSAGE);
-					User.getInstance().addBasket(answer, test);
+					User.getInstance().addBasket(answer, CarControl.getCar());
 					System.out.print(User.getInstance().getList());
 					testList.add(test);
 					System.out.print(testList);
