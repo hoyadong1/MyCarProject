@@ -163,7 +163,9 @@ public class Car implements Manageable {
     public String getCarName() {
         return name;
     }
-
+    public String getCarCode() {
+        return code;
+    }
     public int getCarPrice() {
         int sum = price;
         for (Option option : optionList) {

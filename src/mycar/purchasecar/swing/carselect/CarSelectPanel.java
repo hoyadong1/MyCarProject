@@ -30,6 +30,8 @@ public class CarSelectPanel extends JPanel {
     private Car selectCar = null;
     JButton backButton;
     JLabel carName;
+    CarInfoPanel carInfo;
+
     ButtonClickListener buttonClickListener = new ButtonClickListener();
 
     private void setting() {
@@ -60,8 +62,7 @@ public class CarSelectPanel extends JPanel {
                 String selectCarName = tempJList.getSelectedValue();
                 selectCar = MyCarProgram.findCar(selectCarName);
                 selectCar.removeOption();
-                carName.setText(selectCar.getCarName());
-                System.out.println(selectCar.getCarName());
+                carInfo.updateImage(selectCar.getCarCode(),selectCar.getCarName());
             }
         });
         return tempJList;
@@ -91,27 +92,45 @@ public class CarSelectPanel extends JPanel {
 
     class CarInfoPanel extends JPanel {
 
+        public void updateImage(String code, String name){
+            removeAll();
+            if(code.equals("")){
+                JPanel carImgPanel = new LoadImage("../../../images/none.png", 240, 240);
+                carImgPanel.setBorder(new LineBorder(Color.black, 2));
+                carImgPanel.setLocation(47, 76);
+                carImgPanel.setSize(240, 240);
+                add(carImgPanel);
+            }
+            else {
+                JPanel carImgPanel = new LoadImage("../../../images/"+code+"_front.jpg", 240, 240);
+                carImgPanel.setBorder(new LineBorder(Color.black, 2));
+                carImgPanel.setLocation(47, 76);
+                carImgPanel.setSize(240, 240);
+                add(carImgPanel);
+            }
+            update();
+            carName.setText(name);
+            revalidate();
+            repaint();
+        }
         private void setting() {
             setLayout(null);
             setPreferredSize(new Dimension(540, 400));
             setBackground(Palette.firstPanel);
             setBorder(new LineBorder(Color.black, 2));
         }
-
-        public CarInfoPanel() {
-            setting();
-
-            JPanel carImgPanel = new LoadImage("../../../images/none.png", 240, 240);
-            carImgPanel.setBorder(new LineBorder(Color.black, 2));
-            carImgPanel.setLocation(47, 76);
-            carImgPanel.setSize(240, 240);
-            add(carImgPanel);
+        private void update(){
 
             carName = new JLabel("없음");
             carName.setLocation(309, 165);
             carName.setSize(200, 62);
             JLabelFont.setFont(carName, 30);
             add(carName);
+        }
+        public CarInfoPanel() {
+            setting();
+            updateImage("","없음");
+            update();
         }
     }
 
@@ -133,7 +152,7 @@ public class CarSelectPanel extends JPanel {
         carList.setLocation(67, 68);
         add(carList);
 
-        JPanel carInfo = new CarInfoPanel();
+        carInfo = new CarInfoPanel();
         carInfo.setSize(540, 400);
         carInfo.setLocation(600, 140);
         add(carInfo);
