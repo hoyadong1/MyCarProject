@@ -13,8 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 
 import mycar.purchasecar.swing.MainPanel;
+import mycar.ui.Palette;
 
 public class OptionTotalCalPanel extends JPanel{
 	JButton deleteBtn;
@@ -22,15 +24,20 @@ public class OptionTotalCalPanel extends JPanel{
 	JLabel totalCal;
 	public OptionTotalCalPanel() {
 		JPanel test = new JPanel();
+		test.setBorder(new LineBorder(Color.DARK_GRAY, 3));
+    	Palette pal = new Palette();
+    	setBackground(pal.background);
 		totalCal = new JLabel("합계 : " + a);
 		setPreferredSize(new Dimension(800, 100));
 		setLayout(new GridLayout(2,1, 10, 10));
 		totalCal.setPreferredSize(new Dimension(600, 20));
 		deleteBtn = new JButton("삭제");
+		deleteBtn.setBackground(pal.button);
 		deleteBtn.setPreferredSize(new Dimension(70, 30));
-        test.setBackground(Color.white);
+		test.setBackground(pal.background);
 		
 		JButton backButton = new JButton("back");
+		backButton.setBackground(pal.button);
         backButton.setPreferredSize(new Dimension(70, 50));
         backButton.addActionListener(e -> back());
         test.add(totalCal);
