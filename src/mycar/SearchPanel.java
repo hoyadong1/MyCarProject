@@ -13,6 +13,7 @@ public class SearchPanel extends JPanel {
     JButton searchButton;
     MyCarProgram mcp;
     CarStoreListPanel carStoreListPanel;
+
     public SearchPanel(MyCarProgram mcp, CarStoreListPanel carStoreListPanel) {
         this.mcp = mcp;
         this.carStoreListPanel = carStoreListPanel;
@@ -27,16 +28,16 @@ public class SearchPanel extends JPanel {
         this.add(lblNewLabel_1);
 
         carCodeField = new JTextField();
-        carCodeField.setBounds((964-232)/2, 167, 232, 28); 
+        carCodeField.setBounds((964 - 232) / 2, 167, 232, 28);
         this.add(carCodeField);
         carCodeField.setColumns(10);
 
         searchButton = new JButton("Search");
-        searchButton.setBounds((964-232)/2, 217, 232, 35);  
+        searchButton.setBounds((964 - 232) / 2, 217, 232, 35);
         this.add(searchButton);
 
         resultArea = new JTextArea();
-        resultArea.setBounds((964-910)/2, 267, 910, 246);  
+        resultArea.setBounds((964 - 910) / 2, 267, 910, 246);
         this.add(resultArea);
 
         addSearchButtonListener();
@@ -54,7 +55,8 @@ public class SearchPanel extends JPanel {
                     for (CarStore store : CarStoreManager.getInstance().mList) {
                         if (store.haveCar(findingCar)) {
                             carExists = true;
-                            rows.add(new Object[]{store.name, store.location, store.carList.get(findingCar)});
+                            rows.add(new Object[] {store.name, store.location,
+                                    store.carList.get(findingCar)});
                         }
                     }
                     if (carExists) {
@@ -70,5 +72,5 @@ public class SearchPanel extends JPanel {
             }
         });
     }
-    
+
 }
