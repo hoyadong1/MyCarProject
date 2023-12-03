@@ -142,4 +142,8 @@ public class CarListPanel extends JPanel {
         side.setIcon(sideImage);
         back.setIcon(backImage);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'branch1' of https://github.com/hoyadong1/MyCarProject.git
