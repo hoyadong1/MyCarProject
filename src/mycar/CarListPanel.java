@@ -16,6 +16,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
+import mycar.ui.Palette;
 
 public class CarListPanel extends JPanel {
     private JTable carTable;
@@ -42,7 +43,7 @@ public class CarListPanel extends JPanel {
      * Create the panel.
      */
     public CarListPanel() {
-        setBackground(Color.decode("#07BEB8"));
+        setBackground(Palette.background);
         this.setBounds(0, 0, 1194, 761);
         this.setLayout(null);
         this.setVisible(false);
@@ -51,15 +52,16 @@ public class CarListPanel extends JPanel {
         lblNewLabel.setBorder(new LineBorder(Color.DARK_GRAY, 1));
         lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 30));
         lblNewLabel.setBounds(12, 10, 437, 36);
+        lblNewLabel.setBackground(Palette.firstPanel);
         this.add(lblNewLabel);
 
         columnNames = new String[] {"Car code", "Car name", "Car price", "Car year",
                 "Car fuel", "Fuel efficiency", "Car power"};
         model = new DefaultTableModel(Start1.data, columnNames);
         carTable = new JTable(model);
-        carTable.setBackground(Color.decode("#9CEAEF"));
+        carTable.setBackground(Palette.listNotSelect);
         JPanel panel = new JPanel();
-        panel.setBackground(Color.decode("#3DCCC7"));
+        panel.setBackground(Palette.firstPanel);
         panel.setBounds(12, 523, 1170, 228);
         add(panel);
         panel.setLayout(null);

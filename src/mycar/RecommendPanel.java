@@ -9,6 +9,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import mycar.ui.Palette;
 
 public class RecommendPanel extends JPanel {
     /**
@@ -34,7 +35,7 @@ public class RecommendPanel extends JPanel {
      * Create the panel.
      */
     public RecommendPanel() {
-        this.setBackground(Color.decode("#07BEB8"));
+        this.setBackground(Palette.background);
         this.setBounds(0, 0, 1194, 761);
         this.setLayout(null);
         this.setVisible(false);
@@ -56,7 +57,7 @@ public class RecommendPanel extends JPanel {
 
         list = new JList<>();
         list.setBorder(new LineBorder(Color.DARK_GRAY, 3));
-        list.setBackground(Color.decode("#9CEAEF"));
+        list.setBackground(Palette.listNotSelect);
         list.setFont(new Font("굴림", Font.BOLD, 60));
         list.setModel(new AbstractListModel() {
             String[] values = new String[] {"가솔린", "", "LPG", "", "디젤", "", "전기", "", "하이브리드"};
@@ -74,8 +75,9 @@ public class RecommendPanel extends JPanel {
         this.add(list);
 
         panel = new JPanel();
-        panel.setBackground(Color.decode("#68D8D6"));
+        panel.setBackground(Palette.firstPanel);
         panel.setBounds(23, 179, 811, 428);
+        panel.setBorder(labelBorder);
         add(panel);
         panel.setLayout(null);
 

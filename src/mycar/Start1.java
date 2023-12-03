@@ -16,6 +16,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import mycar.ui.Palette;
 
 public class Start1 {
 
@@ -80,7 +81,7 @@ public class Start1 {
 
 
         LoginPanel login = new LoginPanel();
-        login.setBackground(Color.decode("#07BEB8"));
+        login.setBackground(Palette.background);
         login.setBounds(0, 0, 1194, 761);
         myCarProgram.getContentPane().add(login);
 

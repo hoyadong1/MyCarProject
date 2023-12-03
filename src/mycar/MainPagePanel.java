@@ -5,6 +5,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import mycar.ui.Palette;
 
 public class MainPagePanel extends JPanel {
 
@@ -18,7 +19,7 @@ public class MainPagePanel extends JPanel {
      */
     public MainPagePanel() {
         this.setForeground(new Color(0, 0, 0));
-        this.setBackground(Color.decode("#07BEB8"));
+        this.setBackground(Palette.background);
         this.setBounds(0, 0, 1184, 761);
         this.setLayout(null);
         this.setVisible(false);

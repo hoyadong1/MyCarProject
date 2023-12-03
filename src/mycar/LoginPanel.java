@@ -9,6 +9,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import java.awt.SystemColor;
+import mycar.ui.Palette;
 
 public class LoginPanel extends JPanel {
     JTextField idField;
@@ -22,7 +23,7 @@ public class LoginPanel extends JPanel {
         ImagePanel loginImage = new ImagePanel(new ImageIcon("./images/Login.jpg").getImage());
         loginImage.setBorder(new LineBorder(Color.DARK_GRAY, 5));
 
-        this.setBackground(Color.decode("#07BEB8"));
+        this.setBackground(Palette.firstPanel);
         this.setBounds(0, 0, 1143, 714);
         this.setLayout(null);
         loginImage.setBounds(592, 152, 551, 443);
@@ -53,7 +54,7 @@ public class LoginPanel extends JPanel {
         add(lblNewLabel_1_1);
         
         JPanel panel = new JPanel();
-        panel.setBackground(Color.decode("#68D8D6"));
+        panel.setBackground(Palette.firstPanel);
         panel.setBounds(29, 150, 551, 280);
         panel.setBorder(new LineBorder(Color.DARK_GRAY, 5));
         add(panel);
