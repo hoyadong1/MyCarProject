@@ -22,6 +22,8 @@ public class CarOptionSelect extends JPanel{
 	Car selectCar;
 	Car inputCar;
 	JTextField totalCal;
+	SelectOptionListPanel selectOptionList;
+	AllOptionListPanel optionJList;
 	int calNum = 0;
 	public CarOptionSelect(Car car) {
 		inputCar = car;
@@ -50,7 +52,7 @@ public class CarOptionSelect extends JPanel{
 		
 		//텍스트 필드
 		//선택한 옵션들 표기
-		SelectOptionListPanel selectOptionList = new SelectOptionListPanel(selectCar);
+		selectOptionList = new SelectOptionListPanel(selectCar);
 		
 		//현제 선택한 옵션들 가격 합
 		OptionTotalCalPanel totalCalP = new OptionTotalCalPanel();
@@ -58,10 +60,13 @@ public class CarOptionSelect extends JPanel{
 
         add(selectOptionList, BorderLayout.WEST);
 
+		//---검색기능----
+
         //전체 옵션 표기	(버튼 포함)(버튼 기능 구현)
         //============================================================
         //추가 버튼================================================
-        AllOptionListPanel optionJList = new AllOptionListPanel(selectCar);
+		optionJList = new AllOptionListPanel(selectCar);
+		optionJList.btnPanel.searchButton.addActionListener(e -> search());
         ActionListener listener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -142,6 +147,21 @@ public class CarOptionSelect extends JPanel{
 
 		//frame.setVisible(true);
 	}
+	private void search() {
+
+		String searchTerm = optionJList.btnPanel.searchField.getText().toLowerCase();
+		optionJList.searchCarOptionModel.clear();
+		System.out.println(optionJList.carOptionList.size());
+		for (int i = 0; i < optionJList.carOptionList.size(); i++) {
+			String item = optionJList.carOptionList.getElementAt(i).toLowerCase();
+			if (item.contains(searchTerm)) {
+				optionJList.searchCarOptionModel.addElement(optionJList.carOptionList.getElementAt(i));
+			}
+		}
+
+		optionJList.optionJList.setModel(optionJList.searchCarOptionModel);
+	}
+
     public static void main(String[] args) {
         new CarOptionSelect(null);
     }

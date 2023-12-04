@@ -27,19 +27,8 @@ import mycar.ui.Palette;
 
 public class SelectOptionListPanel extends JPanel {
 
-    DefaultListModel<String> selectCarOptionModel = new DefaultListModel<>() {
-        @Override
-        public boolean contains(Object element) {
-            String elementWithoutBrackets = ((String) element).replaceAll("\\(.*?\\)", "").trim();
-            for (String currentElement : Collections.list(elements())) {
-                String currentElementWithoutBrackets = currentElement.replaceAll("\\(.*?\\)", "").trim();
-                if (currentElementWithoutBrackets.equals(elementWithoutBrackets)) {
-                    return true;
-                }
-            }
-            return false;
-        }
-    };
+    DefaultListModel<String> selectCarOptionModel = new OptionListModel();
+
     JScrollPane scrolled;
     JList<String> tempJList;
     Palette pal = new Palette();
