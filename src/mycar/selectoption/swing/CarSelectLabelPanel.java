@@ -27,7 +27,7 @@ public class CarSelectLabelPanel extends JPanel{
 		JLabel carName = new JLabel();
 		carName.setFont(new Font("굴림", Font.BOLD, 20));
 		if(car!=null) {
-			carName.setText(car.getCarName()+car.getCarPrice()+"만원");
+			carName.setText(car.getCarName()+" "+car.getCarPrice()+"만원");
 		}
 		else {
 			carName.setText("없음");
