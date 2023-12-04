@@ -66,8 +66,11 @@ public class CarOptionSelect extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String data = optionJList.makeList.getSelectedValue();
-				selectOptionList.selectCarOptionModel.addElement(data);
-				optionJList.makeList.clearSelection();
+				if (!selectOptionList.selectCarOptionModel.contains(data)) {
+					selectOptionList.selectCarOptionModel.addElement(data);
+				} else {
+						JOptionPane.showMessageDialog(null, "중복된 옵션을 넣을 수 없습니다!", "Message",JOptionPane.ERROR_MESSAGE );
+				}
 				//클릭 시 총합 가격 변동
 				for(Option option : optionJList.optionList.mList) {
 					if((option.getName()).equals(data)) {
