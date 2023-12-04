@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import mycar.Car;
+import mycar.MyCarProgram;
 import mycar.Option;
 import mycar.User;
 import mycar.purchasecar.swing.MainPanel;
@@ -18,9 +19,13 @@ import mycar.ui.Palette;
 
 public class CarOptionSelect extends JPanel{
 	//JFrame frame;
+	Car selectCar;
+	Car inputCar;
 	JTextField totalCal;
 	int calNum = 0;
 	public CarOptionSelect(Car car) {
+		inputCar = car;
+		selectCar = car;
 		//프레임 크기(실행용)
 		//frame = new JFrame("test");
 		//frame.setSize(964, 530);
@@ -31,8 +36,8 @@ public class CarOptionSelect extends JPanel{
 		Palette pal = new Palette();
 		setBackground(pal.background);
 		//차 가격
-		if(car!=null)
-			calNum = car.getCarPrice();
+		if(selectCar!=null)
+			calNum = selectCar.getCarPrice();
 		else
 			calNum = 0;
 		
@@ -45,7 +50,7 @@ public class CarOptionSelect extends JPanel{
 		
 		//텍스트 필드
 		//선택한 옵션들 표기
-		SelectOptionListPanel selectOptionList = new SelectOptionListPanel(car);
+		SelectOptionListPanel selectOptionList = new SelectOptionListPanel(selectCar);
 		
 		//현제 선택한 옵션들 가격 합
 		OptionTotalCalPanel totalCalP = new OptionTotalCalPanel();
@@ -56,7 +61,7 @@ public class CarOptionSelect extends JPanel{
         //전체 옵션 표기	(버튼 포함)(버튼 기능 구현)
         //============================================================
         //추가 버튼================================================
-        AllOptionListPanel optionJList = new AllOptionListPanel(car);
+        AllOptionListPanel optionJList = new AllOptionListPanel(selectCar);
         ActionListener listener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -67,7 +72,7 @@ public class CarOptionSelect extends JPanel{
 				for(Option option : optionJList.optionList.mList) {
 					if((option.getName()).equals(data)) {
 						calNum += option.getPrice();
-						car.addOptionList(option);
+						selectCar.addOptionList(option);
 					}
 						
 				}
@@ -108,7 +113,9 @@ public class CarOptionSelect extends JPanel{
 				User saveOp = User.getInstance();
 				String answer = JOptionPane.showInputDialog("견적 이름을 입력해주세요.");
 				JOptionPane.showMessageDialog(null, answer+"가 저장되었습니다.", "저장 알림", JOptionPane.INFORMATION_MESSAGE);
-				saveOp.addBasket(answer, car);
+				saveOp.addBasket(answer, selectCar);
+				selectCar = selectCar.deepCopy();
+				selectOptionList.selectCarOptionModel.removeAllElements();
 			}
 		};
 		optionJList.btnPanel.saveBtn.addActionListener(saveListener);
@@ -116,8 +123,8 @@ public class CarOptionSelect extends JPanel{
 		ActionListener compareListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(car.getCarName());
-				CarComparePanel panel3 = new CarComparePanel(car, null);
+				System.out.println(selectCar.getCarName());
+				CarComparePanel panel3 = new CarComparePanel(selectCar, null);
 				MainPanel.getInstance().add(panel3, "panel3");
 				MainPanel.getInstance().showPanel("panel3");
 			}

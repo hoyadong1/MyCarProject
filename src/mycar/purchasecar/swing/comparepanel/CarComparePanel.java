@@ -104,6 +104,7 @@ public class CarComparePanel extends JPanel {
 
     public CarComparePanel(Car userMadeCar, Car basketCar) {
         setting();
+        userMadeCar.print();
 
         userMadeCarPanel = new CarPanel(userMadeCar);
         makeGridBag(userMadeCarPanel, 51, 63, 516, 583);
@@ -120,6 +121,7 @@ public class CarComparePanel extends JPanel {
         listButton.addActionListener(e -> showListPopup());
 
         JButton nextButton = new JButton("종료");
+        makeGridBag(nextButton, 912, 687, 237, 60);
         nextButton.addActionListener(e -> Start1.showMain());
     }
 }

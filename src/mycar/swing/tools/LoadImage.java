@@ -16,9 +16,6 @@ public class LoadImage extends JPanel {
 
     private Image loadImage(String imagePath) {
         try {
-            // 이미지를 클래스 패스에서 로드
-            System.out.println(imagePath);
-            System.out.println(getClass().getResource(imagePath));
             URL imageURL = getClass().getResource(imagePath);
             if (imageURL != null) {
                 return ImageIO.read(imageURL);

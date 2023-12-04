@@ -187,4 +187,15 @@ public class Car implements Manageable {
         }
         return sum / optionCount;
     }
+    public Car deepCopy() {
+        Car copy = new Car();
+        copy.code = this.code;
+        copy.name = this.name;
+        copy.price = this.price;
+        copy.year = this.year;
+        copy.fuel = this.fuel;
+        copy.fuelEfficiency = this.fuelEfficiency;
+        copy.power = this.power;
+        return copy;
+    }
 }
