@@ -24,6 +24,7 @@ public class Start1 {
     MyCarProgram mcp;
     static CardLayout cardLayout;
     public static JFrame myCarProgram;
+    Part part = new Part();
 
     public static void main(String[] args) {
         MyCarProgram mcp = new MyCarProgram();
@@ -104,13 +105,36 @@ public class Start1 {
         myCarProgram.getContentPane().add(mainPage,"main");
         
         //===================================================================================================================================
+        RepairPanel repairPanel = new RepairPanel();
+
+
+        JButton repairSubmit = new JButton("Research");
+        repairSubmit.setBounds(736, 225, 97, 23);
+        repairPanel.add(repairSubmit);
+        myCarProgram.getContentPane().add(repairPanel);
+
+
+        // =========================================================================================================================
+        RepairPartListPanel repairPartListPanel = new RepairPartListPanel();
+        myCarProgram.getContentPane().add(repairPartListPanel);
+        
+        JButton returntoMain_1 = new JButton("Return to Main menu");
+        returntoMain_1.setFont(new Font("굴림", Font.PLAIN, 20));
+        returntoMain_1.setBounds(723, 10, 229, 36);
+        repairPartListPanel.add(returntoMain_1);
+        
+        
+        
+   //======================여기 민우 수정==========================================================================================
         
         
         CarStoreListPanel carStoreListPanel = new CarStoreListPanel(mcp, CarList, mainPage);
-        myCarProgram.getContentPane().add(carStoreListPanel,"carStoreListPanel");
+        myCarProgram.getContentPane().add(carStoreListPanel);
 
         SearchPanel searchCarPanel = new SearchPanel(mcp, carStoreListPanel);
-        myCarProgram.getContentPane().add(searchCarPanel,"searchCarPanel");
+        myCarProgram.getContentPane().add(searchCarPanel);
+
+        //======================여기까지 민우 수정=======================================================================================================
 
         //===================================================================================================================================
         
@@ -125,10 +149,14 @@ public class Start1 {
         mainPage.add(purchaseEstimate);
 
         JButton carSearch = new JButton("carSearch");
+        // ===여기 민우 추가==============================================================================================================================
+        carSearch.setIcon(new ImageIcon("./images/searchcar.jpg"));
+        // ===여기까지 민우 추가==============================================================================================================================
         carSearch.setBounds(710, 130, 383, 218);
         mainPage.add(carSearch);
 
         JButton repairEstimate = new JButton("repairEstimate");
+        repairEstimate.setIcon(new ImageIcon("./images/carrepair.jpg"));
         repairEstimate.setBounds(710, 450, 383, 218);
         mainPage.add(repairEstimate);
 
@@ -150,10 +178,16 @@ public class Start1 {
             cardLayout.show(myCarProgram.getContentPane(),"recommendPanel");
         });
         
-        carSearch.addActionListener(e -> {
-            cardLayout.show(myCarProgram.getContentPane(),"searchCarPanel");
+        // ===민우 수정==============================================================================================================================  
+        carSearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainPage.setVisible(false);
+                searchCarPanel.setVisible(true);
+                searchCarPanel.showRecentSearchPanel();  
+            }
         });
-        
+        // ===여기까지 민우 수정==============================================================================================================================
         purchaseEstimate.addActionListener(e -> {
             cardLayout.show(myCarProgram.getContentPane(),"purchase");
         });
@@ -176,6 +210,31 @@ public class Start1 {
         });
         returntoMain.addActionListener(e -> cardLayout.show(myCarProgram.getContentPane(),"main"));
 
+        repairEstimate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainPage.setVisible(false);
+                repairPanel.setVisible(true);
+            }
+        });
+        repairSubmit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                part.read(repairPanel.repairCode.getText());
+                mcp.makeRepairPartList(part);
+                repairPartListPanel.repairModel.setDataVector(data, repairPartListPanel.columnNames);
+                myCarProgram.add(repairPartListPanel);
+                repairPanel.setVisible(false);
+                repairPartListPanel.setVisible(true);
+            }
+        });
+        returntoMain_1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                repairPartListPanel.setVisible(false);
+                mainPage.setVisible(true);
+            }
+        });
     }
     public static void showMain() {
         cardLayout.show(myCarProgram.getContentPane(),"main");

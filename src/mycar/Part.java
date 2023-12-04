@@ -18,6 +18,10 @@ public class Part implements Manageable {
         fixPrice = scan.nextInt();
     }
 
+    void read(String a) {
+        code = a;
+    }
+
     @Override
     public void print() {
         System.out.printf("%s %s %d %d\n", code, name, price, fixPrice);
@@ -31,4 +35,30 @@ public class Part implements Manageable {
         return false;
     }
 
+    boolean isMatches(Part p) {
+        return code.equals(p.code);
+    }
+
+    public int insertSelf(int row) {
+        if (row == 0) {
+            Start1.data = new Object[][]{{code, price},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},};
+        } else {
+            for (int i = 0; i < 2; i++) {
+                if (i == 0) {
+                    Start1.data[row][i] = code;
+                }
+                if (i == 1) {
+                    Start1.data[row][i] = price;
+                }
+            }
+        }
+        return (row + 1);
+    }
 }
+

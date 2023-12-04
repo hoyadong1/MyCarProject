@@ -16,7 +16,6 @@ public class MyCarProgram {
 
     public void run() {
         ReviewManager.getInstance().readAll("Review.txt", scan -> new Review());
-        ReviewManager.getInstance().printAll();
         OptionManager.getInstance().readAll("Option.txt", scan -> new Option());
         PartManager.getInstance().readAll("Part.txt", scan -> new Part());
         CarManager.getInstance().readAll("Car.txt", scan -> {
@@ -28,8 +27,6 @@ public class MyCarProgram {
         });
         CarStoreManager.getInstance().readAll("CarStore.txt", scan -> new CarStore());
         RepairShopManager.getInstance().readAll("RepairShop.txt", scan -> new RepairShop());
-
-        OptionManager.getInstance().printAll();
         //CarManager.getInstance().printAll();
     }
 
@@ -175,9 +172,19 @@ public class MyCarProgram {
         }
     }
 
+    public void makeRepairPartList(Part part) {
+        int row = 0;
+        for (Part p : PartManager.getInstance().mList) {
+            if (p.isMatches(part)) {
+                row = p.insertSelf(row);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         MyCarProgram mcp = new MyCarProgram();
         mcp.run();
     }
 
 }
+
