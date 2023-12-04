@@ -7,14 +7,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import javax.swing.JTextField;
 import mycar.Car;
 import mycar.ui.Palette;
 
 public class OptionSelectBtnPanel extends JPanel{
 	
-	JButton plusBtn ,saveBtn,calBtn,compareBtn;
+	JButton plusBtn;
+	JButton saveBtn;
+	JButton calBtn;
+	JButton compareBtn;
+	JButton searchButton;
+	JTextField searchField;
 	Palette pal = new Palette();
 	private JButton makeJButton (String btnName) {
 		JButton btn = new JButton(btnName);
@@ -25,20 +32,33 @@ public class OptionSelectBtnPanel extends JPanel{
 
 		return btn;
 	}
-	
-	public OptionSelectBtnPanel(Car car) {
-    	
-    	setBackground(pal.background);
+	private void make(JComponent component, int x, int y, int w, int h) {
+		component.setSize(w, h);
+		component.setLocation(x, y);
+		add(component);
+	}
+	public OptionSelectBtnPanel() {
+		setLayout(null);
+    	setBackground(Palette.background);
+
 		plusBtn = makeJButton("추가");
+		make(plusBtn,0,0,65,50);
+
 		saveBtn = makeJButton("저장");
+		make(saveBtn,75,0,65,50);
+
 		calBtn = makeJButton("계산");
+		make(calBtn,150,0,65,50);
+
 		compareBtn = makeJButton("견적");
-		
-		setLayout(new GridLayout(1,3, 10, 10));
-		add(plusBtn);
-		add(calBtn);
-		add(saveBtn);
-		add(compareBtn);
+		make(compareBtn,225,0,65,50);
+
+		searchField = new JTextField(15);
+		make(searchField,0,60,215,50);
+
+		searchButton = new JButton("Search");
+		make(searchButton,225,60,65,50);
+
 		
 	}
 

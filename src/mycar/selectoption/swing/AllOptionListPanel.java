@@ -1,5 +1,6 @@
 package mycar.selectoption.swing;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -32,17 +33,19 @@ public class AllOptionListPanel extends JPanel {
     JList<String> makeList;
     OptionSelectBtnPanel btnPanel;
     OptionManager optionList;
+    DefaultListModel<String> carOptionList;
+    DefaultListModel<String> searchCarOptionModel = new DefaultListModel<>();
+    JList<String> optionJList;
     Palette pal = new Palette();
     ListSelectionEvent e;
     public void valueChanged(ListSelectionEvent e) {
     	
     }
     private JList<String> makeJList(Car car) {
-        JList<String> optionJList;
         optionJList = new JList<>();
         optionJList.setBackground(pal.listNotSelect);
         optionJList.setSelectionBackground(pal.listSelect);
-        DefaultListModel<String> carOptionList = new DefaultListModel<>();
+        carOptionList = new DefaultListModel<>();
         optionList = OptionManager.getInstance();
         optionJList.addMouseListener(new MyMouseListener());
         if (car != null) {
@@ -75,17 +78,20 @@ public class AllOptionListPanel extends JPanel {
         }
     }
     public AllOptionListPanel(Car car) {
-    	
+    	setLayout(null);
     	setBackground(pal.background);
         makeList = makeJList(car);
         makeList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         JScrollPane scrolled = new JScrollPane(makeList);
         //makeList
         scrolled.setPreferredSize(new Dimension(300, 600));
+        scrolled.setSize(300,560);
+        scrolled.setLocation(50,0);
         add(scrolled);
         setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
-        btnPanel = new OptionSelectBtnPanel(car);
-        
-        add(btnPanel);
+        btnPanel = new OptionSelectBtnPanel();
+        btnPanel.setSize(290,110);
+        btnPanel.setLocation(50,570);
+        add(btnPanel,BorderLayout.SOUTH);
     }
 }

@@ -10,6 +10,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import java.util.Collections;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -24,13 +25,15 @@ import javax.swing.event.ListSelectionListener;
 import mycar.Car;
 import mycar.ui.Palette;
 
-public class SelectOptionListPanel extends JPanel{
-	DefaultListModel<String> selectCarOptionModel = new DefaultListModel<>();
-	JScrollPane scrolled;
+public class SelectOptionListPanel extends JPanel {
+
+    DefaultListModel<String> selectCarOptionModel = new OptionListModel();
+
+    JScrollPane scrolled;
     JList<String> tempJList;
     Palette pal = new Palette();
-	//OptionSelectBtnPanel plusElement = new OptionSelectBtnPanel(car);
-	
+    //OptionSelectBtnPanel plusElement = new OptionSelectBtnPanel(car);
+
     private JList<String> makeList(Car car) {
 
         tempJList = new JList<>(selectCarOptionModel);
@@ -39,22 +42,22 @@ public class SelectOptionListPanel extends JPanel{
         return tempJList;
     }
 
-	public SelectOptionListPanel(Car car) {
-    	
-    	setBackground(pal.background);
-		setPreferredSize(new Dimension(800, 600));
-		CarSelectLabelPanel carSelectLabel = new CarSelectLabelPanel(car);
-		carSelectLabel.setPreferredSize(new Dimension(800, 100));
-		add(carSelectLabel);
-		
-		JList<String> selectOptionJList = makeList(car);
-		
-		scrolled=new JScrollPane(selectOptionJList);
-		scrolled.setPreferredSize(new Dimension(800, 450)); 
-		
-		add(scrolled);
-		setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
+    public SelectOptionListPanel(Car car) {
 
-	}
-	
+        setBackground(pal.background);
+        setPreferredSize(new Dimension(800, 600));
+        CarSelectLabelPanel carSelectLabel = new CarSelectLabelPanel(car);
+        carSelectLabel.setPreferredSize(new Dimension(800, 100));
+        add(carSelectLabel);
+
+        JList<String> selectOptionJList = makeList(car);
+
+        scrolled = new JScrollPane(selectOptionJList);
+        scrolled.setPreferredSize(new Dimension(800, 450));
+
+        add(scrolled);
+        setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+
+    }
+
 }
