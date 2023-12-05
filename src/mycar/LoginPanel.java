@@ -24,7 +24,7 @@ public class LoginPanel extends JPanel {
 		this.setBackground(Palette.firstPanel);
 		this.setBounds(0, 0, 1143, 714);
 		this.setLayout(null);
-		loginImage.setBounds(592, 152, 551, 443);
+		loginImage.setBounds(592, 146, 551, 443);
 		this.add(loginImage);
 
 		JLabel madeBy = new JLabel("Made by A조");
@@ -72,19 +72,19 @@ public class LoginPanel extends JPanel {
 		idLable.setFont(new Font("Constantia", Font.PLAIN, 35));
 
 		idField = new JTextField();
-		idField.setBounds(97, 134, 349, 54);
+		idField.setBounds(97, 40, 349, 54);
 		panel.add(idField);
 		idField.setText("1234");
 		idField.setFont(new Font("Constantia", Font.BOLD, 25));
 		idField.setColumns(10);
 
 		passwordField = new JPasswordField();
-		passwordField.setBounds(97, 40, 349, 54);
+		passwordField.setBounds(97, 134, 349, 54);
 		panel.add(passwordField);
 		passwordField.setFont(new Font("Constantia", Font.BOLD, 25));
 
 		JLabel pageName = new JLabel("My Car Program");
-		pageName.setBounds(423, 10, 298, 132);
+		pageName.setBounds(423, 10, 325, 132);
 		add(pageName);
 		pageName.setBackground(new Color(255, 255, 255));
 		pageName.setForeground(new Color(0, 0, 0));
