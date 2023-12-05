@@ -12,7 +12,7 @@ import mycar.ui.Palette;
 
 public class CarInformationPanel extends JPanel {
 
-    JPanel carImagePanel;
+    LoadImage carImagePanel;
     CarTextPanel carTextPanel;
 
     private void setting() {
@@ -31,12 +31,23 @@ public class CarInformationPanel extends JPanel {
 
     public void updateCar(Car car) {
         carTextPanel.updateLabel(car);
+        String imagePath;
+        if (car == null) {
+            imagePath = "../../../images/none.png";
+        } else {
+            imagePath = "../../../images/" + car.getCarCode() + "_front.jpg";
+        }
+        carImagePanel.updateImage(imagePath,200,200);
     }
 
     public CarInformationPanel(Car car) {
         setting();
+        if(car == null){
+            carImagePanel = new LoadImage("../../../images/none.png", 200, 200);
+        }else{
+            carImagePanel = new LoadImage("../../../images/"+car.getCarCode()+"_front.jpg", 200, 200);
 
-        carImagePanel = new LoadImage("../../../images/none.png", 200, 200);
+        }
         makeLayout(carImagePanel, 24, 29, 200, 200);
         carTextPanel = new CarTextPanel(car);
         makeLayout(carTextPanel, 244, 29, 248, 200);
