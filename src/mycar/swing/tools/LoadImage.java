@@ -20,8 +20,8 @@ public class LoadImage extends JPanel {
             if (imageURL != null) {
                 return ImageIO.read(imageURL);
             } else {
-                System.err.println("Image not found: " + imagePath);
-                return null;
+                imageURL = getClass().getResource("../../../images/none.png");
+                return ImageIO.read(imageURL);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -41,7 +41,18 @@ public class LoadImage extends JPanel {
 
         return resizedImage;
     }
+    public void updateImage(String imagePath, int maxWidth, int maxHeight) {
+        Image newImage = loadImage(imagePath);
 
+        if (newImage.getWidth(null) > maxWidth || newImage.getHeight(null) > maxHeight) {
+            newImage = resizeImage(newImage, maxWidth, maxHeight);
+        }
+
+        this.img = newImage;
+
+        setPreferredSize(new Dimension(img.getWidth(null), img.getHeight(null)));
+        repaint();
+    }
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

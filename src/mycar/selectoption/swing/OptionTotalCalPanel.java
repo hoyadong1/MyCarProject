@@ -27,7 +27,7 @@ public class OptionTotalCalPanel extends JPanel{
 		test.setBorder(new LineBorder(Color.DARK_GRAY, 3));
     	Palette pal = new Palette();
     	setBackground(pal.background);
-		totalCal = new JLabel("합계 : " + a);
+		totalCal = new JLabel("합계 : " + a +"만원");
 		setPreferredSize(new Dimension(800, 100));
 		setLayout(new GridLayout(2,1, 10, 10));
 		totalCal.setPreferredSize(new Dimension(600, 20));

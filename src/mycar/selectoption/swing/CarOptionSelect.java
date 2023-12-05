@@ -107,7 +107,7 @@ public class CarOptionSelect extends JPanel{
 		ActionListener calListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				totalCalP.totalCal.setText("합계 : "+ calNum);
+				totalCalP.totalCal.setText("합계 : "+ calNum+"만원");
 			}
 		};
 		

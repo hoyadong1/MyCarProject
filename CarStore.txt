@@ -1,5 +1,19 @@
-��� �����븮�� AK2 2 CL4 2 JFPE 2 DL3 1 GL3 1 0
-��� �����븮�� AK2EV 2 AK2 2 DL3 3 0
-��� �����븮�� DL3HEV 2 AK2EV 2 JFPE 1 0
-��� �����븮�� JFHEV 1 GL3 2 DL3 1 0
-��� �д��߾����� GL3HEV 1 AL4 3 DL3 1 JFPE 1 0
+기아 서현대리점 AK2 2 CL4 2 JFPE 2 DL3 1 GL3 1 0
+기아 오리대리점 AK2EV 2 AK2 2 DL3 3 0
+기아 죽전대리점 DL3HEV 2 AK2EV 2 JFPE 1 0
+기아 동서대리점 JFHEV 1 GL3 2 DL3 1 0
+기아 분당중앙지점 GL3HEV 1 AL4 3 DL3 1 JFPE 1 0
+현대 철원지점 LX2 2 MX5 6 NE 2 NX4 2 GN7 2 DN8PE 2 AVT1 2 0
+현대 운악대리점 MX5 5 NE 2 NX4 2 SX2 2 GN7 2 DN8PE 1 0
+현대 신대원대리점 MX5 5 NX4 2 QX1PE 8 CE 2 MDPE 2 AX1 2 0
+현대 신동두천대리점 MX5 2 NEN 2 FE 2 GN7HEV 4 CE 4 MDPE 3 0
+현대 동두천지점 LX3PE 2 NEN 3 SX2 2 GN7HEV 2 MDPE 2 0
+현대 포천지점 LX2 4 MX5 4 FE 3 SX2 2 QX1PE 1 GN7 2 0
+제네시스플레이스 강남청담지점 IK 2 RG3EV 2 JK1 1 RS4 1 RG3 2 RG3 2 0
+제네시스플레이스 구미동부지점 JK1 1 RS4 3 RG3 2 RG3 2 IK 2 RG3EV 2 0
+르노코리아자동차 성남대리점 QM6 3 SM6 8 XM3HEV 3 XM3 2 0
+르노코리아자동차 율동지점 QM6 8 SM6 5 XM3 1 0
+르노코리아자동차 분당오리지점 SM6 3 XM3HEV 2 XM3 3 0
+르노코리아자동차 영통대리점 XM3HEV 3 XM3 2 0
+르노코리아자동차 북수원지점 QM6 1 SM6 3 XM3 7 0
+르노코리아자동차 용인대리점 XM3HEV 3 XM3 7 0

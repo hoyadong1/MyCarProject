@@ -39,6 +39,8 @@ public class SelectOptionListPanel extends JPanel {
         tempJList = new JList<>(selectCarOptionModel);
         tempJList.setBackground(pal.listNotSelect);
         tempJList.setSelectionBackground(pal.listSelect);
+        tempJList.setCellRenderer(new CustomListCellRenderer());
+
         return tempJList;
     }
 

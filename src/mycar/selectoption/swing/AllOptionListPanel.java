@@ -45,6 +45,9 @@ public class AllOptionListPanel extends JPanel {
         optionJList = new JList<>();
         optionJList.setBackground(pal.listNotSelect);
         optionJList.setSelectionBackground(pal.listSelect);
+        optionJList.setCellRenderer(new CustomListCellRenderer());
+
+
         carOptionList = new DefaultListModel<>();
         optionList = OptionManager.getInstance();
         optionJList.addMouseListener(new MyMouseListener());
@@ -77,6 +80,7 @@ public class AllOptionListPanel extends JPanel {
             }
         }
     }
+
     public AllOptionListPanel(Car car) {
     	setLayout(null);
     	setBackground(pal.background);
