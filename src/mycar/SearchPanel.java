@@ -91,8 +91,4 @@ public class SearchPanel extends JPanel {
             }
         });
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> branch 'branch1' of https://github.com/hoyadong1/MyCarProject.git
