@@ -13,8 +13,8 @@ public class Car implements Manageable {
     int price;
     int year;
     String fuel;
-    int fuelEfficiency;
-    int power;
+    double fuelEfficiency;
+    double power;
 
     ArrayList<Option> optionList = new ArrayList<>();
 
@@ -25,8 +25,8 @@ public class Car implements Manageable {
         price = scan.nextInt();
         year = scan.nextInt();
         fuel = scan.next();
-        fuelEfficiency = scan.nextInt();
-        power = scan.nextInt();
+        fuelEfficiency = scan.nextDouble();
+        power = scan.nextDouble();
 
         while (true) {
             String option = scan.next();
@@ -40,7 +40,7 @@ public class Car implements Manageable {
 
     @Override
     public void print() {
-        System.out.printf("%s %s %d %d %s %d %d\n\t\t", code, name, price, year, fuel,
+        System.out.printf("%s %s %d %d %s %f %f\n\t\t", code, name, price, year, fuel,
             fuelEfficiency, power);
         for (Option o : optionList) {
             System.out.print(o.name + " ");
@@ -88,6 +88,20 @@ public class Car implements Manageable {
     public int insertSelf(int row) {
         if (row == 0) {
             Start1.data = new Object[][]{{code, name, price, year, fuel, fuelEfficiency, power},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},

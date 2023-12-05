@@ -172,9 +172,19 @@ public class MyCarProgram {
         }
     }
 
+    public void makeRepairPartList(Part part) {
+        int row = 0;
+        for (Part p : PartManager.getInstance().mList) {
+            if (p.isMatches(part)) {
+                row = p.insertSelf(row);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         MyCarProgram mcp = new MyCarProgram();
         mcp.run();
     }
 
 }
+
